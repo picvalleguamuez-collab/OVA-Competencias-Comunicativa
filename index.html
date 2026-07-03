@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OVA · Competencias Comunicativas · UNAD</title>
+<style>
+:root{
+  /* Paleta corporativa oficial UNAD */
+  --azul-unad:#004683; --naranja-unad:#EC6608; --amarillo-unad:#FFB81C; --oro-laurel:#C59B27;
+  --rojo:#EC6608; --rojo-oscuro:#004683; --naranja:#FFB81C; --negro:#1A1A1A;
+  --gris:#F5F5F5; --gris-medio:#D9D9D9; --blanco:#FFFFFF; --verde:#50B748;
+  --morado-unad:#A54686; --celeste-unad:#43C7F4;
+  --font-display:'Segoe UI Semibold','Trebuchet MS',sans-serif;
+  --font-body:'Segoe UI','Trebuchet MS',Arial,sans-serif;
+  --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:var(--font-body);color:var(--negro);background:var(--blanco);line-height:1.55;}
+h1,h2,h3,h4{font-family:var(--font-display);margin:0 0 .5em 0;}
+p{margin:0 0 1em 0;}
+img,svg{display:block;max-width:100%;}
+.container{max-width:1140px;margin:0 auto;padding:0 24px;}
+.section{padding:72px 0;}
+.section-alt{background:var(--gris);}
+.eyebrow{display:inline-block;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--rojo);margin-bottom:10px;}
+.section-title{font-size:clamp(1.6rem,3vw,2.4rem);color:var(--negro);}
+.section-lead{max-width:680px;color:#444;font-size:1.05rem;}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;font-family:var(--font-display);font-size:.95rem;font-weight:600;padding:12px 22px;border-radius:999px;transition:transform .15s ease, box-shadow .15s ease, background .2s ease;}
+.btn:active{transform:scale(.97);}
+.btn-primary{background:var(--rojo);color:#fff;box-shadow:0 6px 16px rgba(236,102,8,.35);}
+.btn-primary:hover{background:var(--rojo-oscuro);}
+.btn-outline{background:transparent;color:var(--rojo);border:2px solid var(--rojo);}
+.btn-outline:hover{background:var(--rojo);color:#fff;}
+.btn-naranja{background:var(--naranja);color:#1a1a1a;}
+.btn-naranja:hover{filter:brightness(.95);}
+.btn:disabled{opacity:.45;cursor:not-allowed;}
+.badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
+.badge-facil{background:#E6F4EA;color:var(--verde);}
+.badge-medio{background:#FFF1DC;color:#B5650A;}
+.badge-dificil{background:#FBE4E4;color:var(--rojo);}
+
+/* ===== HEADER ===== */
+header.site{position:sticky;top:0;z-index:100;background:var(--negro);color:#fff;box-shadow:0 2px 14px rgba(0,0,0,.25);}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1140px;margin:0 auto;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-mark{width:42px;height:42px;border-radius:10px;background:var(--rojo);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;color:#fff;font-size:1rem;flex-shrink:0;}
+.brand-text strong{display:block;font-size:.95rem;letter-spacing:.04em;}
+.brand-text span{display:block;font-size:.7rem;color:var(--naranja);letter-spacing:.06em;text-transform:uppercase;}
+nav.links{display:flex;gap:4px;flex-wrap:wrap;}
+nav.links a{color:#ddd;text-decoration:none;font-size:.82rem;padding:8px 12px;border-radius:8px;transition:background .2s,color .2s;white-space:nowrap;}
+nav.links a:hover, nav.links a.active{background:rgba(255,255,255,.1);color:#fff;}
+nav.links a.active{color:var(--naranja);}
+#navToggle{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;}
+.integrity-strip{background:#0d2f3d;color:#bfe9f7;font-size:.72rem;text-align:center;padding:5px 14px;letter-spacing:.01em;}
+
+/* ===== SCORE / VIOLATIONS PILL ===== */
+.score-pill{position:fixed;bottom:84px;right:24px;z-index:90;background:var(--negro);color:#fff;border-radius:16px;padding:10px 16px;box-shadow:var(--shadow);font-size:.78rem;display:flex;flex-direction:column;gap:2px;font-family:var(--font-display);min-width:148px;}
+.score-pill b{color:var(--naranja);font-size:1rem;}
+.score-pill .viol{color:#ff8a8a;font-size:.7rem;}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,var(--negro) 0%, var(--rojo-oscuro) 55%, var(--rojo) 130%);color:#fff;padding:90px 0 70px;position:relative;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
+.hero h1{font-size:clamp(2.1rem,4.2vw,3.4rem);line-height:1.08;}
+.hero h1 span{color:var(--naranja);}
+.hero p.sub{color:#e6dede;font-size:1.05rem;max-width:520px;}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 28px;}
+.hero-tags span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:.78rem;}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+.fade-up.in{opacity:1;transform:translateY(0);}
+@media (max-width:880px){.hero-grid{grid-template-columns:1fr;}nav.links{display:none;}nav.links.open{display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:var(--negro);padding:10px;}#navToggle{display:block;}}
+
+/* ===== ANIMATED DIALOGUE SVG (hero) ===== */
+.pulse-dot{animation:pulseDot 2.4s ease-in-out infinite;}
+@keyframes pulseDot{0%,100%{opacity:.35;}50%{opacity:1;}}
+.draw-line{stroke-dasharray:240;stroke-dashoffset:240;animation:drawLine 2.6s ease forwards infinite alternate;}
+@keyframes drawLine{to{stroke-dashoffset:0;}}
+.float-soft{animation:floatSoft 4.5s ease-in-out infinite;}
+@keyframes floatSoft{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+/* ===== CARDS GRID ===== */
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;margin-top:34px;}
+.card{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);border-top:4px solid var(--rojo);transition:transform .25s ease, box-shadow .25s ease;}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(0,0,0,.14);}
+.card .icon-wrap{width:46px;height:46px;margin-bottom:14px;transition:transform .3s ease;}
+.card:hover .icon-wrap{transform:scale(1.12) rotate(-4deg);}
+.card h4{font-size:1.05rem;}
+.card p{font-size:.9rem;color:#555;margin:0;}
+.cite{font-size:.82rem;color:#666;font-style:italic;}
+
+/* ===== TEORIA / APA BLOCKS ===== */
+.teoria-block{background:#fff;border-left:4px solid var(--rojo-oscuro);border-radius:0 var(--radius) var(--radius) 0;padding:18px 22px;margin-bottom:16px;box-shadow:0 4px 14px rgba(0,0,0,.04);}
+.teoria-block h4{font-size:.98rem;color:var(--rojo-oscuro);}
+.referencias{background:var(--negro);color:#ddd;border-radius:var(--radius);padding:28px 30px;margin-top:40px;}
+.referencias h4{color:#fff;}
+.referencias p{padding-left:2em;text-indent:-2em;font-size:.85rem;margin-bottom:.9em;}
+
+/* ===== BANNER ===== */
+.banner{background:var(--rojo);color:#fff;border-radius:var(--radius);padding:36px;margin-top:48px;display:flex;gap:20px;align-items:center;box-shadow:0 14px 30px rgba(0,70,131,.28);}
+.banner .tag{flex-shrink:0;width:64px;height:64px;border-radius:50%;background:var(--naranja);display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+.banner p{margin:0;font-size:1.05rem;line-height:1.5;}
+@media (max-width:600px){.banner{flex-direction:column;text-align:center;}}
+
+/* ===== TABS ===== */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px;border-bottom:2px solid var(--gris-medio);}
+.tab-btn{background:none;border:none;cursor:pointer;padding:12px 18px;font-family:var(--font-display);font-weight:600;font-size:.9rem;color:#777;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .2s, border-color .2s;}
+.tab-btn.active{color:var(--rojo);border-color:var(--rojo);}
+.tab-panel{display:none;padding-top:28px;}
+.tab-panel.active{display:block;animation:fadeIn .4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* ===== PROGRESS ===== */
+.progress-track{width:100%;height:10px;background:var(--gris-medio);border-radius:999px;overflow:hidden;margin:18px 0 6px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--naranja),var(--rojo));width:0%;transition:width .5s ease;}
+.progress-label{font-size:.78rem;color:#666;}
+
+/* ===== TIMER (cronómetro cognitivo) ===== */
+.timer-wrap{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.timer-ring{position:relative;width:38px;height:38px;flex-shrink:0;}
+.timer-ring svg{transform:rotate(-90deg);}
+.timer-ring circle{fill:none;stroke-width:4;}
+.timer-ring .bg{stroke:var(--gris-medio);}
+.timer-ring .fg{stroke:var(--rojo);stroke-linecap:round;transition:stroke-dashoffset 1s linear, stroke .3s ease;}
+.timer-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;color:var(--rojo-oscuro);}
+.timer-label{font-size:.74rem;color:#777;}
+.timer-wrap.warn .fg{stroke:#B5650A;}
+.timer-wrap.danger .fg{stroke:var(--rojo);}
+.timer-wrap.danger .timer-ring{animation:pulseDot 1s ease-in-out infinite;}
+
+/* ===== QUIZ ITEM ===== */
+.quiz-item{background:#fff;border:1px solid var(--gris-medio);border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:0 4px 14px rgba(0,0,0,.04);position:relative;}
+.quiz-item.invalidado{opacity:.55;border-color:var(--rojo);}
+.quiz-item h5{font-size:.98rem;margin-bottom:14px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.opt-btn{text-align:left;background:var(--gris);border:1px solid var(--gris-medio);border-radius:10px;padding:11px 14px;cursor:pointer;font-size:.9rem;transition:all .15s ease;}
+.opt-btn:hover:not(:disabled){border-color:var(--rojo);}
+.opt-btn.correct{background:#E6F4EA;border-color:var(--verde);color:#1d5b22;font-weight:600;}
+.opt-btn.wrong{background:#FBE4E4;border-color:var(--rojo);color:var(--rojo-oscuro);}
+.opt-btn:disabled{cursor:default;}
+.feedback{margin-top:12px;font-size:.85rem;padding:10px 14px;border-radius:8px;display:none;}
+.feedback.show{display:block;}
+.feedback.ok{background:#E6F4EA;color:#1d5b22;}
+.feedback.bad{background:#FBE4E4;color:var(--rojo-oscuro);}
+.feedback.expired{background:#FFF1DC;color:#8a4b00;}
+
+/* ===== DRAG/DROP COMMON ===== */
+.bank{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;padding:14px;background:var(--gris);border-radius:12px;min-height:54px;}
+.chip{background:#fff;border:2px solid var(--rojo);color:var(--rojo-oscuro);border-radius:999px;padding:9px 16px;font-size:.85rem;font-weight:600;cursor:grab;user-select:none;transition:transform .15s ease, box-shadow .15s ease;}
+.chip:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.12);}
+.chip.placed{opacity:.3;cursor:default;}
+.chip.selected{outline:3px solid var(--naranja);}
+.dropzone{border:2px dashed var(--gris-medio);border-radius:10px;padding:12px 14px;min-height:46px;display:flex;align-items:center;font-size:.85rem;color:#888;transition:all .2s ease;}
+.dropzone.over{border-color:var(--rojo);background:#FFF6F0;}
+.dropzone.correct{border-style:solid;border-color:var(--verde);background:#E6F4EA;color:#1d5b22;font-weight:600;}
+.dropzone.wrong-flash{animation:shake .35s ease;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+.bucket{border:2px solid var(--gris-medio);border-radius:12px;padding:12px;min-height:140px;}
+.bucket h5{font-size:.82rem;text-align:center;margin-bottom:10px;color:var(--rojo-oscuro);}
+.bucket .chip{display:block;margin-bottom:8px;text-align:left;}
+
+/* ===== FOOTER / VOLVER ARRIBA ===== */
+.back-top{position:fixed;bottom:24px;right:24px;z-index:90;width:48px;height:48px;border-radius:50%;background:var(--rojo);color:#fff;border:none;cursor:pointer;font-size:1.2rem;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+.back-top.show{opacity:1;pointer-events:auto;}
+footer.site{background:var(--negro);color:#bbb;padding:46px 0 28px;font-size:.85rem;}
+footer.site h4{color:#fff;font-size:.95rem;}
+footer.site a{color:var(--naranja);}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+:focus-visible{outline:3px solid var(--naranja);outline-offset:2px;}
+
+/* ===== INTEGRIDAD ACADÉMICA: overlay de bloqueo ===== */
+#integrityOverlay{position:fixed;inset:0;z-index:999;background:rgba(10,10,12,.94);color:#fff;display:none;align-items:center;justify-content:center;text-align:center;padding:24px;}
+#integrityOverlay.show{display:flex;}
+.integrity-box{max-width:520px;background:#1f1f1f;border:1px solid #ff8a8a;border-radius:var(--radius);padding:34px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+.integrity-box .icn{font-size:2.6rem;margin-bottom:10px;}
+.integrity-box h3{color:#ff8a8a;}
+.integrity-box p{font-size:.88rem;color:#ddd;}
+.integrity-box .small{font-size:.74rem;color:#999;margin-top:14px;}
+
+/* ===== Infografía interactiva (conclusiones) ===== */
+.info-node{cursor:pointer;border-top-color:var(--naranja);}
+.info-panel{display:none;background:#fff;border-radius:var(--radius);padding:20px;margin-top:14px;border:1px solid var(--gris-medio);box-shadow:0 8px 22px rgba(0,0,0,.08);animation:fadeIn .35s ease;}
+.info-panel.show{display:block;}
+
+.no-select{user-select:none;-webkit-user-select:none;}
+
+/* ===== IDENTIFICACIÓN DEL ESTUDIANTE ===== */
+#idOverlay{position:fixed;inset:0;z-index:1000;background:linear-gradient(135deg,var(--negro) 0%, var(--rojo-oscuro) 70%, var(--rojo) 140%);display:flex;align-items:center;justify-content:center;padding:24px;}
+#idOverlay.hide{display:none;}
+.id-box{max-width:480px;width:100%;background:#fff;border-radius:var(--radius);padding:34px;box-shadow:0 24px 60px rgba(0,0,0,.4);}
+.id-box h3{color:var(--rojo-oscuro);}
+.id-box p{font-size:.86rem;color:#555;}
+.id-field{margin-bottom:14px;}
+.id-field label{display:block;font-size:.78rem;font-weight:700;color:#444;margin-bottom:5px;}
+.id-field input, .id-field select{width:100%;border:1px solid var(--gris-medio);border-radius:8px;padding:10px 12px;font-family:var(--font-body);font-size:.92rem;user-select:text;}
+.id-error{color:var(--rojo);font-size:.78rem;display:none;margin-top:4px;}
+.id-error.show{display:block;}
+.student-tag{font-size:.7rem;color:#bfe9f7;margin-top:2px;}
+
+/* ===== GATE DE INICIO (cronómetro) ===== */
+.start-gate{background:#FFF6F0;border:1px dashed var(--rojo);border-radius:var(--radius);padding:22px;text-align:center;}
+.start-gate p{font-size:.9rem;color:#555;}
+
+/* ===== CLASIFICACIÓN (rediseño secuencial) ===== */
+.clasif-card{background:#fff;border:1px solid var(--gris-medio);border-radius:var(--radius);padding:24px;box-shadow:0 4px 14px rgba(0,0,0,.04);}
+.clasif-situacion{background:var(--gris);border-radius:12px;padding:18px;font-size:.98rem;font-weight:600;margin-bottom:16px;text-align:center;}
+.clasif-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;}
+.clasif-opt{background:#fff;border:2px solid var(--gris-medio);border-radius:12px;padding:14px 10px;cursor:pointer;font-size:.86rem;font-weight:600;text-align:center;transition:all .15s ease;color:var(--rojo-oscuro);}
+.clasif-opt:hover:not(:disabled){border-color:var(--rojo);transform:translateY(-2px);}
+.clasif-opt.correct{background:#E6F4EA;border-color:var(--verde);color:#1d5b22;}
+.clasif-opt.wrong{background:#FBE4E4;border-color:var(--rojo);color:var(--rojo-oscuro);}
+.clasif-opt:disabled{cursor:default;}
+
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important;}}
+</style>
+</head>
+<body class="no-select">
+
+<!-- IDENTIFICACIÓN DEL ESTUDIANTE / DOCENTE -->
+<div id="idOverlay">
+  <div class="id-box">
+    <h3>👋 Antes de comenzar</h3>
+    <p>Selecciona tu rol para continuar.</p>
+
+    <div class="id-field" style="display:flex;gap:10px;">
+      <button type="button" class="btn btn-outline" id="roleEstudianteBtn" style="flex:1;justify-content:center;">🎓 Soy estudiante</button>
+      <button type="button" class="btn btn-outline" id="roleDocenteBtn" style="flex:1;justify-content:center;">🧑‍🏫 Soy docente</button>
+    </div>
+
+    <!-- FORMULARIO ESTUDIANTE -->
+    <div id="formEstudiante" style="display:none;">
+      <p style="font-size:.86rem;color:#555;">Esta información queda asociada a tus resultados para que tu docente pueda registrar tu nota. Diligencia tus datos completos.</p>
+      <div class="id-field">
+        <label for="idNombres">Nombres</label>
+        <input type="text" id="idNombres" placeholder="Ej: Camila Andrea" autocomplete="off">
+      </div>
+      <div class="id-field">
+        <label for="idApellidos">Apellidos</label>
+        <input type="text" id="idApellidos" placeholder="Ej: Rojas Muñoz" autocomplete="off">
+      </div>
+      <div class="id-field">
+        <label for="idGrado">Grado</label>
+        <select id="idGrado">
+          <option value="">Selecciona...</option>
+          <option value="10°">10°</option>
+          <option value="11°">11°</option>
+        </select>
+      </div>
+      <div class="id-field">
+        <label for="idInstitucion">Institución</label>
+        <select id="idInstitucion">
+          <option value="">Selecciona...</option>
+          <option value="IE La Libertad">IE La Libertad</option>
+          <option value="IE La Libertad - Nocturna">IE. La Libertad (Nocturna)</option>
+          <option value="IERJAS - El Placer">IERJAS - El Placer</option>
+          <option value="IER El Cairo">IER. El Cairo</option>
+          <option value="IE Valle del Guamuez">IE. Valle del Guamuez</option>
+        </select>
+      </div>
+      <div class="id-field" style="background:var(--gris);border-radius:10px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;">
+        <input type="checkbox" id="idCompromiso" style="width:auto;margin-top:3px;flex-shrink:0;">
+        <label for="idCompromiso" style="font-size:.78rem;font-weight:500;color:#444;margin:0;">Declaro que resolveré esta actividad <strong>por mí mismo(a)</strong>, sin apoyo de inteligencia artificial, buscadores u otra persona, y que la sesión se abrirá en <strong>pantalla completa</strong> durante todo el módulo.</label>
+      </div>
+      <p class="id-error" id="idErrorEstudiante">Por favor completa todos los campos antes de continuar.</p>
+      <button class="btn btn-primary" id="idStartEstudiante" style="width:100%;justify-content:center;">Comenzar el módulo →</button>
+    </div>
+
+    <!-- FORMULARIO DOCENTE -->
+    <div id="formDocente" style="display:none;">
+      <p style="font-size:.86rem;color:#555;">Ingresa con tu nombre y tu correo institucional <strong>@unad.edu.co</strong> para acceder en modo docente: sin monitoreo de integridad y viendo las respuestas correctas de cada actividad.</p>
+      <div class="id-field">
+        <label for="idNombreDocente">Nombre completo</label>
+        <input type="text" id="idNombreDocente" placeholder="Ej: Stiven Eduardo T. Bermúdez" autocomplete="off">
+      </div>
+      <div class="id-field">
+        <label for="idEmailDocente">Correo institucional</label>
+        <input type="email" id="idEmailDocente" placeholder="Ej: nombre@unad.edu.co" autocomplete="off">
+      </div>
+      <p class="id-error" id="idErrorDocente">Por favor completa todos los campos con un correo @unad.edu.co válido.</p>
+      <button class="btn btn-primary" id="idStartDocente" style="width:100%;justify-content:center;">Ingresar en modo docente →</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="integrity-strip">🔒 Sesión en pantalla completa con monitoreo de integridad académica activo — cambios de pestaña, pérdida de foco, salir de pantalla completa o intentos de captura quedan registrados
+    <div class="student-tag" id="studentTagTop"></div>
+  </div>
+  <div class="nav-wrap">
+    <div class="brand">
+      <div class="brand-mark">U</div>
+      <div class="brand-text"><strong>UNAD · UDR Zona Sur</strong><span>Competencias Comunicativas</span></div>
+    </div>
+    <button id="navToggle" aria-label="Abrir menú">☰</button>
+    <nav class="links" id="navLinks">
+      <a href="#intro">Introducción</a>
+      <a href="#previa">Actividad Previa</a>
+      <a href="#foro">Foro</a>
+      <a href="#control">Actividades de Control</a>
+      <a href="#aprendizaje">Actividad de Aprendizaje</a>
+      <a href="#conclusiones">Conclusiones</a>
+      <a href="#panelDocente" id="navPanelDocente" style="display:none;">📊 Panel Docente</a>
+      <a href="#creditos">Créditos</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ENCABEZADO TEMÁTICO OVA -->
+<div style="background:linear-gradient(90deg,var(--azul-unad),var(--naranja-unad) 60%,var(--amarillo-unad));padding:14px 0;">
+  <div class="container" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;text-align:center;">
+    <svg width="30" height="30" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 10c6-4 14-4 18 0v28c-4-4-12-4-18 0z" fill="#fff" opacity=".95"/><path d="M42 10c-6-4-14-4-18 0v28c4-4 12-4 18 0z" fill="#fff" opacity=".7"/><path d="M12 16h6M12 22h6M12 28h5" stroke="var(--azul-unad)" stroke-width="2" stroke-linecap="round"/></svg>
+    <strong style="color:#fff;font-family:var(--font-display);font-size:1rem;letter-spacing:.03em;">Formato OVA · Leer, Lectura y Comprensión Lectora</strong>
+    <svg width="26" height="26" viewBox="0 0 48 48" aria-hidden="true"><circle cx="20" cy="20" r="13" fill="none" stroke="#fff" stroke-width="3.5"/><line x1="29" y1="29" x2="40" y2="40" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="fade-up">
+      <p class="eyebrow" style="color:var(--naranja)">Módulo virtual · Nivel pregrado · Modalidad híbrida</p>
+      <h1>Competencias <span>Comunicativas</span></h1>
+      <p class="sub">Un recorrido interactivo, cronometrado y con monitoreo de integridad académica para comprender, practicar y dominar las competencias que sostienen tu vida académica, profesional y social.</p>
+      <div class="hero-tags">
+        <span>5 competencias clave</span>
+        <span>25 actividades interactivas</span>
+        <span>Cronómetro cognitivo</span>
+        <span>Convenio PIC-ET 2026</span>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="#intro" class="btn btn-primary">Comenzar recorrido →</a>
+        <a href="#aprendizaje" class="btn btn-outline" style="border-color:#fff;color:#fff;">Ver retos de aprendizaje</a>
+      </div>
+    </div>
+    <div class="fade-up float-soft" style="transition-delay:.15s">
+      <svg viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="210" cy="180" r="160" fill="rgba(247,148,29,.12)"/>
+        <circle cx="140" cy="150" r="34" fill="#EC6608"/>
+        <rect x="100" y="190" width="80" height="100" rx="24" fill="#ffffff" opacity=".92"/>
+        <circle cx="280" cy="170" r="30" fill="#ffffff"/>
+        <rect x="244" y="206" width="72" height="92" rx="22" fill="#EC6608" opacity=".85"/>
+        <path class="draw-line" d="M170,150 C200,120 250,120 270,160" stroke="#FFB81C" stroke-width="3" fill="none"/>
+        <g transform="translate(60,40)">
+          <rect x="0" y="0" width="120" height="60" rx="16" fill="#ffffff"/>
+          <polygon points="20,58 10,80 40,58" fill="#ffffff"/>
+          <rect x="16" y="16" width="80" height="8" rx="4" fill="#FFB81C" class="pulse-dot"/>
+          <rect x="16" y="32" width="56" height="8" rx="4" fill="#EC6608" class="pulse-dot" style="animation-delay:.4s"/>
+        </g>
+        <g transform="translate(230,260)">
+          <rect x="0" y="0" width="120" height="56" rx="16" fill="#1A1A1A"/>
+          <polygon points="100,0 110,-20 80,0" fill="#1A1A1A"/>
+          <rect x="16" y="14" width="70" height="8" rx="4" fill="#EC6608" class="pulse-dot" style="animation-delay:.8s"/>
+          <rect x="16" y="30" width="90" height="8" rx="4" fill="#ffffff" class="pulse-dot" style="animation-delay:1.2s"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- INTRODUCCIÓN -->
+<section class="section" id="intro">
+  <div class="container">
+    <p class="eyebrow">Introducción</p>
+    <h2 class="section-title fade-up">1. ¿Qué son las competencias comunicativas?</h2>
+    <p class="section-lead fade-up">Se entienden como la capacidad de un hablante-oyente de comprender, producir e interactuar mediante el lenguaje de forma pertinente al contexto social, cultural y académico en el que se encuentra. El concepto fue introducido por <span class="cite">Hymes (1972)</span>, para quien la competencia comunicativa supone no solo el conocimiento gramatical de una lengua, sino también el saber cuándo, cómo y con quién resulta apropiado emplearla. A partir de esta base, <span class="cite">Canale y Swain (1980)</span> propusieron un modelo articulado en cuatro componentes —lingüístico, sociolingüístico, discursivo y estratégico—, al que estudios posteriores incorporaron la dimensión pragmática, vinculada a la interpretación de la intención del hablante más allá del significado literal.</p>
+
+    <div class="grid-cards" id="competenciasGrid"></div>
+
+    <div id="teoriaBlocks" style="margin-top:34px;"></div>
+
+    <div class="banner fade-up">
+      <div class="tag">🎯</div>
+      <p><strong>Objetivo de aprendizaje:</strong> fortalecer en el estudiante de pregrado, modalidad virtual (híbrida), el dominio articulado de las competencias lingüística, sociolingüística, discursiva, estratégica y pragmática —en los términos definidos por <span class="cite" style="color:#ffe9d6;">Canale y Swain (1980)</span> y <span class="cite" style="color:#ffe9d6;">Hymes (1972)</span>—, mediante actividades situadas, cronometradas y gamificadas, como base para su desempeño académico, profesional y social.</p>
+    </div>
+
+    <div class="grid-cards" style="margin-top:56px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+      <div class="card" style="border-top-color:var(--naranja)">
+        <h4>📚 En lo académico</h4>
+        <p>La comprensión inferencial y la argumentación escrita —evaluadas en las Pruebas Saber 11°— dependen, según <span class="cite">Cassany (2006)</span>, de la capacidad de leer "entre líneas" e interpretar lo implícito en un texto.</p>
+      </div>
+      <div class="card" style="border-top-color:var(--naranja)">
+        <h4>💼 En lo profesional</h4>
+        <p>La comunicación asertiva, la escucha activa y la argumentación se sostienen en la competencia estratégica descrita por <span class="cite">Canale y Swain (1980)</span> para sortear los obstáculos de la interacción.</p>
+      </div>
+      <div class="card" style="border-top-color:var(--naranja)">
+        <h4>🌎 En lo territorial</h4>
+        <p>En contextos rurales y de frontera como Putumayo, son —siguiendo a <span class="cite">Freire (1970)</span>— una herramienta de equidad educativa que fortalece la voz del estudiante como sujeto de su propia palabra.</p>
+      </div>
+    </div>
+
+    <div class="referencias">
+      <h4>Referencias (Norma APA 7ª edición)</h4>
+      <p>Canale, M., &amp; Swain, M. (1980). Theoretical bases of communicative approaches to second language teaching and testing. <em>Applied Linguistics, 1</em>(1), 1–47. https://doi.org/10.1093/applin/I.1.1</p>
+      <p>Cassany, D. (2006). <em>Tras las líneas: Sobre la lectura contemporánea</em>. Anagrama.</p>
+      <p>Freire, P. (1970). <em>Pedagogía del oprimido</em>. Siglo XXI Editores.</p>
+      <p>Hymes, D. (1972). On communicative competence. En J. B. Pride &amp; J. Holmes (Eds.), <em>Sociolinguistics: Selected readings</em> (pp. 269–293). Penguin Books.</p>
+      <p>Vygotsky, L. S. (1978). <em>Mind in society: The development of higher psychological processes</em>. Harvard University Press.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDAD PREVIA -->
+<section class="section section-alt" id="previa">
+  <div class="container">
+    <p class="eyebrow">Actividad previa</p>
+    <h2 class="section-title">8 retos según tu nivel de pensamiento</h2>
+    <p class="section-lead">Avanza del nivel fácil al difícil. Cada nivel exige una operación cognitiva distinta —recordar, comprender y analizar— y por eso el tiempo de respuesta cambia en cada uno. Todas las preguntas tienen 4 opciones, tipo ICFES. El cronómetro de cada nivel solo se activa cuando tú decides comenzar.</p>
+
+    <div class="progress-track"><div class="progress-fill" id="previaProgress"></div></div>
+    <p class="progress-label" id="previaProgressLabel">0 de 8 actividades completadas</p>
+
+    <div class="tabs" id="previaTabs">
+      <button class="tab-btn active" data-tab="previaFacil">🟢 Fácil · Recordar (40s)</button>
+      <button class="tab-btn" data-tab="previaMedio">🟠 Medio · Comprender (70s)</button>
+      <button class="tab-btn" data-tab="previaDificil">🔴 Difícil · Analizar (110s)</button>
+    </div>
+    <div class="tab-panel active" id="previaFacil"></div>
+    <div class="tab-panel" id="previaMedio"></div>
+    <div class="tab-panel" id="previaDificil"></div>
+  </div>
+</section>
+
+<!-- FORO -->
+<section class="section" id="foro">
+  <div class="container">
+    <p class="eyebrow">Foro</p>
+    <h2 class="section-title">¿Qué entiende usted por Competencias Comunicativas?</h2>
+    <p class="section-lead">Antes de participar en el foro de la plataforma, organiza tus ideas aquí.</p>
+    <div id="nubePalabras" style="display:flex;flex-wrap:wrap;gap:12px;margin:30px 0;min-height:60px;"></div>
+    <div class="card" style="border-top-color:var(--naranja);max-width:760px;">
+      <h4>Practica tu aporte</h4>
+      <textarea id="foroTextarea" rows="6" placeholder="Escribe aquí tu reflexión sobre qué son las competencias comunicativas y por qué importan en tu formación..." style="width:100%;border:1px solid var(--gris-medio);border-radius:10px;padding:14px;font-family:var(--font-body);font-size:.92rem;resize:vertical;user-select:text;"></textarea>
+      <p class="progress-label" id="foroContador">0 caracteres</p>
+      <button class="btn btn-primary" id="foroPreview">Vista previa de mi aporte</button>
+      <div id="foroPreviewBox" style="display:none;margin-top:16px;background:var(--gris);border-radius:10px;padding:16px;font-size:.9rem;"></div>
+    </div>
+    <div class="card" style="margin-top:24px;max-width:760px;">
+      <h4>Rúbrica esperada de participación</h4>
+      <p style="margin:0;font-size:.88rem;">✔ Claridad en la expresión de la idea &nbsp;·&nbsp; ✔ Argumentación con conceptos de las lecturas &nbsp;·&nbsp; ✔ Respeto y construcción colectiva &nbsp;·&nbsp; ✔ Respuesta a al menos un compañero</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVIDADES DE CONTROL -->
+<section class="section section-alt" id="control">
+  <div class="container">
+    <p class="eyebrow">Actividades de control</p>
+    <h2 class="section-title">7 retos para dominar los conceptos clave</h2>
+    <p class="section-lead">Control de lectura, espacios en blanco, simulación teórica, una carrera, un banco de palabras, el tablero mágico y una actividad de clasificación paso a paso.</p>
+    <div class="tabs" id="controlTabs">
+      <button class="tab-btn active" data-tab="ctrlLectura">1. Control de lectura</button>
+      <button class="tab-btn" data-tab="ctrlEspacios">2. Rellenar espacios</button>
+      <button class="tab-btn" data-tab="ctrlSimulacion">3. Simulación teórica</button>
+      <button class="tab-btn" data-tab="ctrlCarrera">4. Carrera</button>
+      <button class="tab-btn" data-tab="ctrlCrucigrama">5. Banco de palabras</button>
+      <button class="tab-btn" data-tab="ctrlTablero">6. Tablero mágico</button>
+      <button class="tab-btn" data-tab="ctrlOrganizar">7. Clasificación</button>
+    </div>
+    <div class="tab-panel active" id="ctrlLectura"></div>
+    <div class="tab-panel" id="ctrlEspacios"></div>
+    <div class="tab-panel" id="ctrlSimulacion"></div>
+    <div class="tab-panel" id="ctrlCarrera"></div>
+    <div class="tab-panel" id="ctrlCrucigrama"></div>
+    <div class="tab-panel" id="ctrlTablero"></div>
+    <div class="tab-panel" id="ctrlOrganizar"></div>
+  </div>
+</section>
+
+<!-- ACTIVIDAD DE APRENDIZAJE -->
+<section class="section" id="aprendizaje">
+  <div class="container">
+    <p class="eyebrow">Actividad de aprendizaje</p>
+    <h2 class="section-title">10 retos de alta complejidad</h2>
+    <p class="section-lead">Casos vivenciales de la vida universitaria, personal, profesional y social, resueltos con gamificación. Por su nivel de análisis y aplicación, cada caso dispone de 130 segundos.</p>
+    <div class="grid-cards" id="aprendizajeGrid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));"></div>
+    <div class="card" style="margin-top:40px;border-top-color:var(--naranja)">
+      <h4>🔓 Desafío final integrador (escape room académico)</h4>
+      <p>Resuelve las pistas en orden para liberar el acceso a la siguiente unidad. Cada pista tiene 4 opciones y un tiempo límite de 50 segundos: piensa bien antes de elegir, hay opciones diseñadas para confundir a quien no domine el concepto.</p>
+      <div id="escapeRoom"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSIONES -->
+<section class="section section-alt" id="conclusiones">
+  <div class="container">
+    <p class="eyebrow">Conclusiones</p>
+    <h2 class="section-title">Cierre del módulo</h2>
+
+    <h4 style="margin-top:30px;">Infografía interactiva — haz clic en cada competencia</h4>
+    <p class="section-lead">Selecciona cada nodo para desplegar su definición teórica, autor de referencia y un ejemplo situado en el contexto rural del Putumayo.</p>
+    <div class="grid-cards" id="infografiaGrid"></div>
+    <div id="infoPanelHost"></div>
+
+    <h4 style="margin-top:46px;">Juego de pistas final</h4>
+    <div id="pistasFinal"></div>
+
+    <div class="card" style="margin-top:46px;max-width:620px;border-top-color:var(--rojo);text-align:center;">
+      <h4>Tu nota de dominio conceptual</h4>
+      <div style="font-size:3rem;font-family:var(--font-display);color:var(--rojo);" id="notaFinalNum">--</div>
+      <p id="notaFinalEscala" style="font-family:var(--font-display);font-size:1.1rem;color:var(--rojo-oscuro);margin:0 0 6px;"></p>
+      <p id="notaFinalMsg" style="font-weight:600;"></p>
+      <div id="fortalezasDebilidadesBox" style="display:none;text-align:left;background:var(--gris);border-radius:10px;padding:16px;font-size:.86rem;margin-top:10px;"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px;">
+        <button class="btn btn-primary" id="verReporte">📊 Ver mi informe cuantitativo</button>
+        <button class="btn btn-naranja" id="descargarReporte">📥 Descargar reporte (Excel/CSV)</button>
+        <button class="btn btn-outline" id="copiarResumen">📋 Copiar resumen para Classroom</button>
+        <button class="btn btn-outline" id="guardarRegistroDocente" style="border-color:var(--azul-unad);color:var(--azul-unad);">💾 Guardar registro para el docente</button>
+      </div>
+      <p class="progress-label" style="margin-top:10px;">Entrega en Classroom el archivo descargado, o pega el resumen copiado en el comentario de tu entrega. Usa "Guardar registro para el docente" para alimentar el Panel Docente.</p>
+      <div id="reporteBox" style="display:none;margin-top:16px;text-align:left;background:var(--gris);border-radius:10px;padding:16px;font-size:.85rem;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PANEL DOCENTE -->
+<section class="section" id="panelDocente" style="display:none;">
+  <div class="container">
+    <p class="eyebrow">Panel del docente</p>
+    <h2 class="section-title">Seguimiento y desempeño de estudiantes</h2>
+    <p class="section-lead">Consolida los registros guardados por los estudiantes (en este equipo o importados en archivo .json) para ver el promedio general, el desempeño por institución y grado, fortalezas/debilidades frecuentes y un estimado de participación por género a partir de los nombres reportados.</p>
+
+    <div class="card" style="margin-top:24px;border-top-color:var(--azul-unad);">
+      <h4>1. Cargar registros</h4>
+      <p style="font-size:.88rem;">Los registros guardados por los estudiantes en <strong>este mismo navegador</strong> (por ejemplo, un computador del aula) se cargan automáticamente. Para estudiantes que trabajaron en otros dispositivos, importa aquí los archivos <code>.json</code> que descargaron con el botón "Guardar registro para el docente".</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <input type="file" id="importarRegistros" multiple accept="application/json" style="font-size:.85rem;">
+        <button class="btn btn-outline" id="recargarLocalStorage">🔄 Recargar registros de este navegador</button>
+        <button class="btn btn-outline" id="limpiarRegistros" style="border-color:var(--rojo);color:var(--rojo);">🗑️ Limpiar todo</button>
+      </div>
+    </div>
+
+    <div id="panelDocenteKPIs" class="grid-cards" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:28px;"></div>
+
+    <div class="card" style="margin-top:28px;border-top-color:var(--naranja-unad);">
+      <h4>2. Reportar notas al docente</h4>
+      <p style="font-size:.88rem;">Comparte tu registro descargado (CSV o JSON) en la carpeta oficial de Drive habilitada por el docente para consolidar las notas del curso.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a class="btn btn-naranja" target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1JYX6_V3a76hVlYgrdMw8t5MGfa4sdGjHUI9xxs29yeAd9-pbjCabESlesOZzhcMIA1YJvr-l?usp=drive_link">📁 Abrir carpeta de Drive para reportar notas</a>
+        <button class="btn btn-outline" id="exportarConsolidadoCSV">⬇️ Descargar consolidado (CSV)</button>
+      </div>
+    </div>
+
+    <h4 style="margin-top:40px;">3. Seguimiento por institución y grado</h4>
+    <div id="panelDocenteTablas"></div>
+
+    <h4 style="margin-top:40px;">4. Fortalezas y debilidades generales del grupo</h4>
+    <div id="panelDocenteFD" class="card" style="border-top-color:var(--oro-laurel);"></div>
+
+    <h4 style="margin-top:40px;">5. Dashboard — indicadores por género (estimado)</h4>
+    <p class="section-lead" style="font-size:.82rem;">Estimación automática a partir de patrones de nombres en español; es un indicador estadístico agregado del grupo y puede no ser exacto en todos los casos.</p>
+    <div id="panelDocenteGenero" class="card" style="border-top-color:var(--azul-unad);"></div>
+  </div>
+</section>
+
+<!-- CRÉDITOS -->
+<footer class="site" id="creditos" style="background:linear-gradient(160deg,#0d0d0d 0%,var(--azul-unad) 120%);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:.08;background:
+      repeating-linear-gradient(45deg, var(--naranja-unad) 0 2px, transparent 2px 40px);pointer-events:none;"></div>
+  <div class="container" style="position:relative;">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;flex-wrap:wrap;">
+      <svg width="54" height="54" viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="4" width="40" height="40" rx="10" fill="var(--naranja-unad)"/><path d="M14 16h20M14 24h20M14 32h12" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/></svg>
+      <div>
+        <h3 style="color:#fff;margin:0;font-size:1.35rem;">Créditos y alianza institucional</h3>
+        <p style="margin:2px 0 0;color:var(--amarillo-unad);font-size:.85rem;letter-spacing:.03em;">OVA · Leer, Lectura y Comprensión Lectora — Convenio PIC-ET 2026</p>
+      </div>
+    </div>
+
+    <div class="grid-cards" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:0;">
+      <div style="background:rgba(255,255,255,.06);border-top:4px solid var(--naranja-unad);border-radius:var(--radius);padding:20px;backdrop-filter:blur(2px);">
+        <h4 style="color:var(--amarillo-unad);">🏛️ UNAD</h4><p style="color:#e4e4e4;">Universidad Nacional Abierta y a Distancia</p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-top:4px solid var(--amarillo-unad);border-radius:var(--radius);padding:20px;">
+        <h4 style="color:var(--amarillo-unad);">🌎 VIDER</h4><p style="color:#e4e4e4;">Vicerrectoría de Desarrollo Regional y Proyección</p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-top:4px solid var(--oro-laurel);border-radius:var(--radius);padding:20px;">
+        <h4 style="color:var(--amarillo-unad);">📖 PAEBM</h4><p style="color:#e4e4e4;">Programa de Alfabetización, Educación Básica y Media para Jóvenes y Adultos</p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-top:4px solid var(--naranja-unad);border-radius:var(--radius);padding:20px;">
+        <h4 style="color:var(--amarillo-unad);">🤝 SISSU</h4><p style="color:#e4e4e4;">Sistema de Servicio Social Unadista</p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-top:4px solid var(--amarillo-unad);border-radius:var(--radius);padding:20px;">
+        <h4 style="color:var(--amarillo-unad);">🧩 SINEP</h4><p style="color:#e4e4e4;">Sistema Nacional de Educación Permanente</p>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border-top:4px solid var(--oro-laurel);border-radius:var(--radius);padding:20px;">
+        <h4 style="color:var(--amarillo-unad);">🌐 PIC-ET</h4><p style="color:#e4e4e4;">Proyecto Integral de Cobertura con Enfoque Territorial</p>
+      </div>
+    </div>
+
+    <div style="margin-top:34px;background:rgba(255,255,255,.06);border-radius:var(--radius);padding:22px 26px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;border:1px solid rgba(255,184,28,.35);">
+      <svg width="60" height="60" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="16" r="9" fill="var(--amarillo-unad)"/><path d="M9 40c2-11 9-15 15-15s13 4 15 15" fill="none" stroke="var(--oro-laurel)" stroke-width="3.4" stroke-linecap="round"/><path d="M12 40l4-8M36 40l-4-8" stroke="var(--oro-laurel)" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <div>
+        <p style="margin:0;color:#fff;font-size:1rem;"><strong>Docente autor:</strong> Stiven Eduardo Taimal Bermúdez</p>
+        <p style="margin:2px 0 0;color:#d8d8d8;font-size:.85rem;">Licenciado en Lengua Castellana · Maestrante en Administración Educativa (MAE-UMB) · UDR Zona Sur, Valle del Guamuez, Putumayo · UNAD 2026</p>
+      </div>
+    </div>
+
+    <hr style="border-color:#333;margin:30px 0 16px;">
+    <p style="margin:0;color:#999;font-size:.76rem;">Diseño instruccional bajo estándar SCORM-compatible · Recurso educativo digital de uso académico institucional · IE La Libertad · IE La Libertad (Nocturna) · IERJAS-El Placer · IER El Cairo · IE Valle del Guamuez.</p>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Volver arriba">↑</button>
+<div class="score-pill" id="scorePill">
+  <span id="studentTagPill" style="color:var(--naranja);font-size:.72rem;"></span>
+  <span>Puntaje: <b id="scoreNow">0</b>/<span id="scoreMax">0</span></span>
+  <span class="viol" id="violCounter">0 alertas de integridad</span>
+</div>
+
+<div id="integrityOverlay">
+  <div class="integrity-box">
+    <div class="icn">🔒</div>
+    <h3 id="integrityTitle">Sesión bloqueada — Alerta 1 de 3</h3>
+    <p id="integrityReason">Se detectó un cambio de ventana / pestaña o un intento de captura de pantalla.</p>
+    <p>Toda actividad sin responder en este momento queda <strong>anulada</strong>, ya que el contenido del módulo reside en los documentos oficiales del curso. Esta alerta se registra en tu reporte final.</p>
+    <button class="btn btn-primary" id="integrityResume">Continuar la sesión</button>
+    <button class="btn btn-naranja" id="integrityDownloadEarly" style="display:none;margin-left:10px;">Descargar mi reporte</button>
+    <p class="small">Nota técnica: un navegador no puede impedir físicamente que alguien use un segundo dispositivo (por ejemplo, un celular) para consultar una IA. Este sistema detecta señales indirectas —salir de pantalla completa, cambiar de pestaña, perder el foco de la ventana, pegar contenido, o atajos de captura/impresión— como evidencia de integridad académica. A la <strong>tercera alerta</strong> la sesión se cierra de forma definitiva.</p>
+  </div>
+</div>
+
+<script>
+/* ============ NAV TOGGLE ============ */
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', ()=> navLinks.classList.toggle('open'));
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', ()=> backTop.classList.toggle('show', window.scrollY > 500));
+backTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+document.querySelectorAll('.fade-up').forEach(el=> setTimeout(()=>el.classList.add('in'), 80));
+const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); revealObserver.unobserve(en.target);} });
+},{threshold:.15});
+document.querySelectorAll('.card').forEach((c,i)=>{
+  c.style.opacity='0'; c.style.transform='translateY(16px)'; c.style.transition=`opacity .5s ease ${ (i%4)*90 }ms, transform .5s ease ${ (i%4)*90 }ms`;
+  revealObserver.observe(c);
+});
+const cardObs = new MutationObserver(()=>{
+  document.querySelectorAll('.card:not([data-rv])').forEach((c,i)=>{
+    c.setAttribute('data-rv','1');
+    c.style.opacity='0'; c.style.transform='translateY(16px)'; c.style.transition=`opacity .5s ease ${(i%4)*90}ms, transform .5s ease ${(i%4)*90}ms`;
+    requestAnimationFrame(()=> requestAnimationFrame(()=>{ c.style.opacity='1'; c.style.transform='translateY(0)'; }));
+  });
+});
+cardObs.observe(document.body,{childList:true,subtree:true});
+
+/* ============ GLOBAL STATE ============ */
+window.OVA = { total:0, max:0, answered:new Set(), violations:0, invalidated:new Set(), activeItems:{}, scores:{}, estudiante:null, sessionClosed:false, locked:true, isDocente:false };
+
+function categoriaDeId(id){
+  if(id.startsWith('previaF')||id.startsWith('previaM')||id.startsWith('previaD')) return 'Actividad previa';
+  if(id==='foro') return 'Foro';
+  if(id.startsWith('ctrlLec')) return 'Control · Lectura';
+  if(id.startsWith('ctrlEsp')) return 'Control · Espacios';
+  if(id.startsWith('ctrlSim')) return 'Control · Simulación';
+  if(id==='carrera') return 'Control · Carrera';
+  if(id==='banco') return 'Control · Banco de palabras';
+  if(id==='tablero') return 'Control · Tablero mágico';
+  if(id==='clasificacion') return 'Control · Clasificación';
+  if(id.startsWith('aprend')) return 'Actividad de aprendizaje';
+  if(id==='escape') return 'Escape room';
+  if(id.startsWith('pista')) return 'Conclusiones';
+  return 'Otro';
+}
+
+function registrarPuntaje(id, puntos, maxPuntos){
+  if(window.OVA.answered.has(id)) return;
+  window.OVA.answered.add(id);
+  window.OVA.total += puntos;
+  window.OVA.max += maxPuntos;
+  window.OVA.scores[id] = { puntos, maxPuntos, categoria: categoriaDeId(id) };
+  document.getElementById('scoreNow').textContent = window.OVA.total;
+  document.getElementById('scoreMax').textContent = window.OVA.max;
+  delete window.OVA.activeItems[id];
+  actualizarNotaFinal();
+}
+
+/* ============ UTILIDAD: BARAJAR OPCIONES (evita que la respuesta correcta quede siempre en la misma posición) ============ */
+function barajarOpciones(item){
+  const idxs = item.options.map((_,i)=>i);
+  for(let k=idxs.length-1;k>0;k--){
+    const j = Math.floor(Math.random()*(k+1));
+    [idxs[k], idxs[j]] = [idxs[j], idxs[k]];
+  }
+  const options = idxs.map(i=>item.options[i]);
+  const correct = idxs.indexOf(item.correct);
+  return Object.assign({}, item, { options, correct });
+}
+
+/* ============ SCROLLSPY ============ */
+const sections = document.querySelectorAll('section[id], footer[id]');
+const navA = document.querySelectorAll('nav.links a');
+const spy = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ navA.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+en.target.id)); } });
+},{rootMargin:'-40% 0px -55% 0px'});
+sections.forEach(s=>spy.observe(s));
+
+/* ============ TABS GENÉRICOS ============ */
+document.querySelectorAll('.tabs').forEach(tabGroup=>{
+  tabGroup.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      tabGroup.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const targetId = btn.dataset.tab;
+      const panels = []; let el = tabGroup;
+      while(el.nextElementSibling && el.nextElementSibling.classList.contains('tab-panel')){ panels.push(el.nextElementSibling); el = el.nextElementSibling; }
+      panels.forEach(p=>p.classList.toggle('active', p.id===targetId));
+    });
+  });
+});
+
+/* ============ CRONÓMETRO COGNITIVO ============ */
+function crearCronometro(hostEl, segundos, etiqueta, onExpire, registerKey){
+  const wrap = document.createElement('div');
+  wrap.className = 'timer-wrap';
+  const R = 16, C = 2*Math.PI*R;
+  wrap.innerHTML = `<div class="timer-ring"><svg width="38" height="38" viewBox="0 0 38 38">
+      <circle class="bg" cx="19" cy="19" r="${R}"></circle>
+      <circle class="fg" cx="19" cy="19" r="${R}" stroke-dasharray="${C}" stroke-dashoffset="0"></circle>
+    </svg><div class="timer-num">${segundos}</div></div>
+    <span class="timer-label">⏱ ${etiqueta}</span>`;
+  hostEl.appendChild(wrap);
+  const fg = wrap.querySelector('.fg');
+  const num = wrap.querySelector('.timer-num');
+  let restante = segundos, expirado=false;
+  const tick = ()=>{
+    if(window.OVA.locked) return;
+    restante--;
+    const pct = Math.max(restante,0)/segundos;
+    fg.setAttribute('stroke-dashoffset', String(C*(1-pct)));
+    num.textContent = Math.max(restante,0);
+    if(restante <= segundos*0.3) wrap.classList.add('warn');
+    if(restante <= segundos*0.15) wrap.classList.add('danger');
+    if(restante <= 0 && !expirado){
+      expirado = true; clearInterval(interval);
+      if(registerKey) delete window.OVA.activeItems[registerKey];
+      onExpire();
+    }
+  };
+  const interval = setInterval(tick, 1000);
+  if(registerKey){
+    window.OVA.activeItems[registerKey] = ()=>{ if(!expirado){ expirado=true; clearInterval(interval); onExpire(true); } };
+  }
+  return { cancel(){ expirado=true; clearInterval(interval); } };
+}
+
+/* ============ GATE DE INICIO: el cronómetro NO arranca hasta que el estudiante decide comenzar ============ */
+function crearGateInicio(hostEl, segundos, textoBoton, onStart){
+  hostEl.innerHTML = '';
+  const gate = document.createElement('div');
+  gate.className = 'start-gate';
+  gate.innerHTML = `<p>⏱ Esta actividad tiene un tiempo de <strong>${segundos} segundos</strong> por pregunta. El cronómetro solo empezará a correr cuando hagas clic en "Comenzar".</p>
+    <button class="btn btn-primary" type="button">${textoBoton || '▶ Comenzar'}</button>`;
+  hostEl.appendChild(gate);
+  gate.querySelector('button').addEventListener('click', ()=>{ hostEl.innerHTML=''; onStart(); });
+}
+
+/* ============ INTEGRIDAD ACADÉMICA (3 intentos) ============ */
+const overlay = document.getElementById('integrityOverlay');
+const violCounter = document.getElementById('violCounter');
+function flagViolation(motivo){
+  if(window.OVA.isDocente) return;
+  if(window.OVA.sessionClosed) return;
+  if(window.OVA.locked) return;
+  window.OVA.locked = true;
+  window.OVA.violations++;
+  violCounter.textContent = window.OVA.violations + ' alerta(s) de integridad';
+  Object.keys(window.OVA.activeItems).forEach(key=>{
+    try{ window.OVA.activeItems[key](); }catch(e){}
+    window.OVA.invalidated.add(key);
+  });
+  document.getElementById('integrityReason').textContent = motivo;
+  const resumeBtn = document.getElementById('integrityResume');
+  const downloadBtn = document.getElementById('integrityDownloadEarly');
+  if(window.OVA.violations >= 3){
+    window.OVA.sessionClosed = true;
+    document.getElementById('integrityTitle').textContent = 'Sesión cerrada definitivamente — Alerta 3 de 3';
+    document.querySelector('.integrity-box p:nth-of-type(2)').innerHTML = 'Alcanzaste el máximo de <strong>3 alertas</strong> permitidas. La sesión queda cerrada y no podrás continuar respondiendo actividades. Descarga tu reporte y comunícate con tu docente.';
+    resumeBtn.style.display = 'none';
+    downloadBtn.style.display = 'inline-flex';
+  } else {
+    document.getElementById('integrityTitle').textContent = 'Sesión bloqueada — Alerta '+window.OVA.violations+' de 3';
+    resumeBtn.style.display = 'inline-flex';
+    downloadBtn.style.display = 'none';
+  }
+  overlay.classList.add('show');
+}
+document.addEventListener('visibilitychange', ()=>{ if(document.hidden) flagViolation('Se detectó un cambio de pestaña o minimización de la ventana.'); });
+window.addEventListener('blur', ()=> flagViolation('Se detectó una pérdida de foco de la ventana del navegador.'));
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'PrintScreen') flagViolation('Se detectó la tecla Impr Pant (captura de pantalla).');
+  if(e.ctrlKey && e.shiftKey && (e.key.toLowerCase()==='s' || e.key.toLowerCase()==='i')){ e.preventDefault(); flagViolation('Se detectó una combinación asociada a herramientas de captura o inspección.'); }
+  if(e.ctrlKey && e.key.toLowerCase()==='p'){ e.preventDefault(); flagViolation('Se detectó un intento de impresión de la página.'); }
+  if(e.key === 'F12'){ e.preventDefault(); flagViolation('Se detectó un intento de abrir herramientas de desarrollador.'); }
+});
+document.addEventListener('contextmenu', e=> e.preventDefault());
+document.addEventListener('copy', (e)=>{ if(!e.target.closest('#foroTextarea')){ e.preventDefault(); flagViolation('Se detectó un intento de copiar contenido del módulo.'); } });
+document.addEventListener('paste', (e)=>{
+  if(!idOverlay.classList.contains('hide')) return; // se permite pegar mientras se llena el formulario de identificación
+  if(window.OVA.isDocente) return;
+  e.preventDefault();
+  flagViolation('Se detectó un intento de pegar contenido (posible copia desde una fuente externa, buscador o IA).');
+});
+
+/* ===== PANTALLA COMPLETA OBLIGATORIA (modo examen) ===== */
+function solicitarPantallaCompleta(){
+  const de = document.documentElement;
+  const req = de.requestFullscreen || de.webkitRequestFullscreen || de.msRequestFullscreen;
+  if(req){ req.call(de).catch(()=>{ /* el navegador puede bloquear la solicitud; se sigue monitoreando por otras señales */ }); }
+}
+document.addEventListener('fullscreenchange', ()=>{
+  if(window.OVA.isDocente || window.OVA.sessionClosed || !window.OVA.estudiante) return;
+  const enPantallaCompleta = !!(document.fullscreenElement || document.webkitFullscreenElement);
+  if(!enPantallaCompleta){
+    flagViolation('Se salió del modo de pantalla completa (posible cambio de aplicación, pestaña o dispositivo).');
+  }
+});
+document.getElementById('integrityResume').addEventListener('click', ()=>{
+  if(window.OVA.sessionClosed) return;
+  overlay.classList.remove('show'); window.OVA.locked = false;
+  if(!window.OVA.isDocente) solicitarPantallaCompleta();
+});
+document.getElementById('integrityDownloadEarly').addEventListener('click', ()=> descargarReporteCSV());
+
+/* ============ IDENTIFICACIÓN DEL ESTUDIANTE / DOCENTE ============ */
+const idOverlay = document.getElementById('idOverlay');
+const roleEstudianteBtn = document.getElementById('roleEstudianteBtn');
+const roleDocenteBtn = document.getElementById('roleDocenteBtn');
+const formEstudiante = document.getElementById('formEstudiante');
+const formDocente = document.getElementById('formDocente');
+
+roleEstudianteBtn.addEventListener('click', ()=>{
+  roleEstudianteBtn.classList.add('btn-primary'); roleEstudianteBtn.classList.remove('btn-outline');
+  roleDocenteBtn.classList.add('btn-outline'); roleDocenteBtn.classList.remove('btn-primary');
+  formEstudiante.style.display='block';
+  formDocente.style.display='none';
+});
+roleDocenteBtn.addEventListener('click', ()=>{
+  roleDocenteBtn.classList.add('btn-primary'); roleDocenteBtn.classList.remove('btn-outline');
+  roleEstudianteBtn.classList.add('btn-outline'); roleEstudianteBtn.classList.remove('btn-primary');
+  formDocente.style.display='block';
+  formEstudiante.style.display='none';
+});
+
+function entrarComo(estudianteData){
+  window.OVA.isDocente = estudianteData.rol === 'Docente';
+  window.OVA.estudiante = estudianteData;
+  const etiqueta = window.OVA.isDocente
+    ? `🧑‍🏫 ${estudianteData.nombres} · Modo docente`
+    : `👤 ${estudianteData.nombres} ${estudianteData.apellidos} · ${estudianteData.grado} · ${estudianteData.institucion}`;
+  document.getElementById('studentTagTop').textContent = etiqueta;
+  document.getElementById('studentTagPill').textContent = window.OVA.isDocente
+    ? `${estudianteData.nombres} · Docente`
+    : `${estudianteData.nombres} ${estudianteData.apellidos} · ${estudianteData.grado}`;
+  if(window.OVA.isDocente){
+    document.querySelector('.integrity-strip').firstChild.textContent = '🧑‍🏫 Modo docente: monitoreo de integridad desactivado y respuestas correctas visibles ';
+    document.getElementById('navPanelDocente').style.display = '';
+    document.getElementById('panelDocente').style.display = '';
+    if(typeof inicializarPanelDocente === 'function') inicializarPanelDocente();
+  }
+  idOverlay.classList.add('hide');
+  window.OVA.locked = false;
+  if(!window.OVA.isDocente) solicitarPantallaCompleta();
+}
+
+document.getElementById('idStartEstudiante').addEventListener('click', ()=>{
+  const nombres = document.getElementById('idNombres').value.trim();
+  const apellidos = document.getElementById('idApellidos').value.trim();
+  const grado = document.getElementById('idGrado').value;
+  const institucion = document.getElementById('idInstitucion').value;
+  const compromiso = document.getElementById('idCompromiso').checked;
+  const err = document.getElementById('idErrorEstudiante');
+  if(!nombres || !apellidos || !grado || !institucion){
+    err.textContent = 'Por favor completa todos los campos antes de continuar.';
+    err.classList.add('show'); return;
+  }
+  if(!compromiso){
+    err.textContent = 'Debes aceptar el compromiso de integridad académica y pantalla completa para continuar.';
+    err.classList.add('show'); return;
+  }
+  err.classList.remove('show');
+  entrarComo({ nombres, apellidos, email:'', grado, institucion, inicio: new Date().toLocaleString('es-CO'), rol:'Estudiante' });
+});
+
+document.getElementById('idStartDocente').addEventListener('click', ()=>{
+  const nombres = document.getElementById('idNombreDocente').value.trim();
+  const email = document.getElementById('idEmailDocente').value.trim();
+  const err = document.getElementById('idErrorDocente');
+  const emailUnadValido = /^[^\s@]+@unad\.edu\.co$/i.test(email);
+  if(!nombres || !email){
+    err.textContent = 'Por favor completa todos los campos antes de continuar.';
+    err.classList.add('show'); return;
+  }
+  if(!emailUnadValido){
+    err.textContent = 'Ingresa un correo institucional válido con dominio @unad.edu.co.';
+    err.classList.add('show'); return;
+  }
+  err.classList.remove('show');
+  entrarComo({ nombres, apellidos:'', email, grado:'', institucion:'UNAD', inicio: new Date().toLocaleString('es-CO'), rol:'Docente' });
+});
+
+/* ============ REPORTE: CSV Y RESUMEN ============ */
+function filaReporte(){
+  const e = window.OVA.estudiante || { nombres:'(sin nombre)', apellidos:'', email:'', grado:'', institucion:'', inicio:'', rol:'Estudiante' };
+  const nota = window.OVA.max>0 ? Math.round((window.OVA.total/window.OVA.max)*100) : 0;
+  const escala = calcularEscala5(nota);
+  const categorias = {};
+  Object.values(window.OVA.scores).forEach(s=>{
+    if(!categorias[s.categoria]) categorias[s.categoria] = {puntos:0,max:0};
+    categorias[s.categoria].puntos += s.puntos;
+    categorias[s.categoria].max += s.maxPuntos;
+  });
+  return { e, nota, escala, categorias };
+}
+function descargarReporteCSV(){
+  const { e, nota, escala, categorias } = filaReporte();
+  const cabecera = ['Nombres','Apellidos','Correo','Grado','Institución','Fecha inicio','Puntaje total','Puntaje máximo','Nota (0-100)','Nota (escala 1.0-5.0)','Desempeño','Alertas de integridad','Actividades anuladas','Desglose por categoría'];
+  const desglose = Object.entries(categorias).map(([k,v])=>`${k}: ${v.puntos}/${v.max}`).join(' | ');
+  const fila = [e.nombres, e.apellidos, e.email||'', e.grado, e.institucion, e.inicio, window.OVA.total, window.OVA.max, nota, escala.valor.toFixed(1), escala.etiqueta, window.OVA.violations, window.OVA.invalidated.size, desglose];
+  const esc = (v)=> `"${String(v).replace(/"/g,'""')}"`;
+  const csv = '\uFEFF' + cabecera.map(esc).join(';') + '\n' + fila.map(esc).join(';') + '\n';
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const nombreArchivo = `Reporte_${(e.apellidos||'estudiante').replace(/\s+/g,'_')}_${(e.nombres||'').replace(/\s+/g,'_')}.csv`;
+  a.href = url; a.download = nombreArchivo; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+function resumenTexto(){
+  const { e, nota, escala, categorias } = filaReporte();
+  let texto = `Reporte OVA · Competencias Comunicativas — UNAD\n`;
+  texto += `Estudiante: ${e.nombres} ${e.apellidos}\nGrado: ${e.grado}\nInstitución: ${e.institucion}\n`;
+  texto += `Puntaje: ${window.OVA.total}/${window.OVA.max}\nNota de dominio conceptual: ${nota}/100 (${escala.valor.toFixed(1)}/5.0 — ${escala.etiqueta})\n`;
+  texto += `Alertas de integridad: ${window.OVA.violations}\nActividades anuladas: ${window.OVA.invalidated.size}\n\nDesglose:\n`;
+  Object.entries(categorias).forEach(([k,v])=>{ texto += `- ${k}: ${v.puntos}/${v.max}\n`; });
+  const fd = calcularFortalezasDebilidades(categorias);
+  texto += `\nFortalezas: ${fd.fortalezas.length? fd.fortalezas.join(', ') : 'aún no hay suficientes datos'}\n`;
+  texto += `Aspectos por reforzar: ${fd.debilidades.length? fd.debilidades.join(', ') : 'aún no hay suficientes datos'}\n`;
+  return texto;
+}
+document.getElementById('descargarReporte').addEventListener('click', descargarReporteCSV);
+document.getElementById('copiarResumen').addEventListener('click', ()=>{
+  const texto = resumenTexto();
+  const fb = document.getElementById('reporteBox');
+  const avisar = (msg)=>{ fb.style.display='block'; fb.innerHTML = `<p>${msg}</p><pre style="white-space:pre-wrap;font-size:.78rem;">${texto}</pre>`; };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(texto).then(()=> avisar('✔ Resumen copiado. Pégalo en el comentario de tu entrega de Classroom.')).catch(()=> avisar('No se pudo copiar automáticamente. Copia manualmente el siguiente texto:'));
+  } else { avisar('Copia manualmente el siguiente texto:'); }
+});
+
+/* ============ RENDER MCQ GENÉRICO (4 opciones, secuencial, cronómetro por pregunta con gate de inicio) ============ */
+function renderMCQ(containerId, items, idPrefix, pointsPerItem, segundos, onAnswer){
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  const letras = ['A','B','C','D'];
+
+  function mostrarPregunta(i, autoIniciar){
+    el.innerHTML = '';
+    const item = barajarOpciones(items[i]);
+    const id = idPrefix+i;
+
+    function construirYArrancar(){
+      const div = document.createElement('div');
+      div.className='quiz-item';
+
+      if(items.length>1){
+        const progreso = document.createElement('p');
+        progreso.className = 'progress-label';
+        progreso.style.marginBottom = '8px';
+        progreso.textContent = `Pregunta ${i+1} de ${items.length}`;
+        div.appendChild(progreso);
+      }
+
+      const timerHost = document.createElement('div');
+      div.appendChild(timerHost);
+      const h5 = document.createElement('h5'); h5.textContent = (i+1)+'. '+item.q; div.appendChild(h5);
+      const opts = document.createElement('div'); opts.className='quiz-opts';
+      item.options.forEach((o,oi)=>{
+        const b = document.createElement('button'); b.className='opt-btn'; b.dataset.idx = oi;
+        b.textContent = letras[oi]+') '+o; opts.appendChild(b);
+      });
+      div.appendChild(opts);
+      const fb = document.createElement('div'); fb.className='feedback'; fb.id='fb-'+id; div.appendChild(fb);
+      el.appendChild(div);
+
+      function bloquear(){
+        div.querySelectorAll('.opt-btn').forEach(b=>b.disabled=true);
+      }
+
+      function avanzar(){
+        if(i+1 < items.length){
+          setTimeout(()=> mostrarPregunta(i+1, true), 900);
+        }
+      }
+
+      function responder(idx, porTiempo, anuladoPorIntegridad){
+        bloquear();
+        cronometro.cancel();
+        const esDocente = window.OVA.isDocente;
+        if(anuladoPorIntegridad){
+          div.classList.add('invalidado');
+          fb.textContent = '⚠ Actividad ANULADA por alerta de integridad académica.';
+          fb.classList.add('show','bad');
+          registrarPuntaje(id, 0, pointsPerItem);
+          avanzar();
+          return;
+        }
+        if(porTiempo){
+          if(esDocente){
+            div.querySelectorAll('.opt-btn')[item.correct].classList.add('correct');
+            fb.textContent = '⏱ Tiempo agotado. La respuesta correcta era: '+letras[item.correct]+') '+item.options[item.correct];
+          } else {
+            fb.textContent = '⏱ Tiempo agotado para esta pregunta. Continuemos con la siguiente.';
+          }
+          fb.classList.add('show','expired');
+          registrarPuntaje(id, 0, pointsPerItem);
+          avanzar();
+          return;
+        }
+        const btn = div.querySelectorAll('.opt-btn')[idx];
+        if(idx===item.correct){
+          btn.classList.add('correct');
+          fb.textContent = esDocente ? ('✔ Correcto. '+(item.explain||'')) : '✔ ¡Respuesta correcta!';
+          fb.classList.add('show','ok');
+          registrarPuntaje(id, pointsPerItem, pointsPerItem);
+        } else {
+          btn.classList.add('wrong');
+          if(esDocente){
+            div.querySelectorAll('.opt-btn')[item.correct].classList.add('correct');
+            fb.textContent = '✘ No es correcto. '+(item.explain||('La respuesta correcta era: '+letras[item.correct]+') '+item.options[item.correct]));
+          } else {
+            fb.textContent = '✘ No es correcto. Revisa el material del módulo antes de continuar.';
+          }
+          fb.classList.add('show','bad');
+          registrarPuntaje(id, 0, pointsPerItem);
+        }
+        if(onAnswer) onAnswer();
+        avanzar();
+      }
+      const cronometro = crearCronometro(timerHost, segundos, nivelEtiqueta(segundos), (porTiempo)=> responder(null, porTiempo!==true, porTiempo===true), id);
+      div.querySelectorAll('.opt-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=> responder(+btn.dataset.idx, false, false));
+      });
+    }
+
+    if(autoIniciar){
+      construirYArrancar();
+    } else {
+      crearGateInicio(el, segundos, '▶ Comenzar esta actividad', construirYArrancar);
+    }
+  }
+
+  mostrarPregunta(0, false);
+}
+function nivelEtiqueta(s){ return s+'s'; }
+
+/* ============ DATOS: COMPETENCIAS ============ */
+const iconosSVG = {
+  ling:`<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#FFF1DC"/><path d="M14 18h20M14 24h20M14 30h12" stroke="#EC6608" stroke-width="3" stroke-linecap="round"/></svg>`,
+  socio:`<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#E6F4EA"/><circle cx="17" cy="20" r="6" fill="#50B748"/><circle cx="31" cy="20" r="6" fill="#004683"/><path d="M10 36c1-7 6-9 7-9s5 1 7 5c2-4 6-5 7-5s6 2 7 9" stroke="#1A1A1A" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+  disc:`<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#FFF1DC"/><path class="draw-line" d="M12 16h24M12 24c6-4 12 4 18 0M12 32h18" stroke="#EC6608" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+  estr:`<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#E6F4EA"/><path d="M24 12l4 8 9 1-6.5 6 1.5 9-8-4.5-8 4.5 1.5-9-6.5-6 9-1z" fill="#50B748"/></svg>`,
+  prag:`<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#FBE4E4"/><circle cx="24" cy="20" r="7" fill="none" stroke="#EC6608" stroke-width="3"/><circle cx="24" cy="20" r="2.4" fill="#EC6608"/><path d="M14 36c2-6 7-8 10-8s8 2 10 8" stroke="#EC6608" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`
+};
+const competencias = [
+  {key:'ling', t:'Lingüística', d:'Dominio del código: gramática, léxico, fonología y ortografía.', autor:'Canale y Swain (1980)', def:'Conocimiento de las reglas gramaticales, léxicas, fonológicas y ortográficas que permiten codificar y decodificar mensajes correctamente.', ej:'Un estudiante de IERJAS redacta un párrafo aplicando correctamente la concordancia verbal y la ortografía.'},
+  {key:'socio', t:'Sociolingüística', d:'Adecuar el discurso según el contexto social y el interlocutor.', autor:'Hymes (1972)', def:'Capacidad de emplear y de interpretar los enunciados de forma apropiada en diferentes contextos sociales, según el grado de formalidad que exige cada situación.', ej:'El mismo estudiante saluda distinto a su tutor de la UNAD que a sus compañeros en el chat del curso.'},
+  {key:'disc', t:'Discursiva', d:'Organizar ideas con coherencia y cohesión en un texto completo.', autor:'Canale y Swain (1980)', def:'Habilidad para combinar formas gramaticales y significados de modo que se logre un texto oral o escrito unificado, mediante el uso de conectores y mecanismos de cohesión.', ej:'Un ensayo sobre la conectividad rural en el Putumayo que enlaza sus párrafos con conectores lógicos.'},
+  {key:'estr', t:'Estratégica', d:'Recursos verbales y no verbales para sostener la comunicación.', autor:'Canale y Swain (1980)', def:'Conjunto de estrategias de comunicación verbal y no verbal que permiten compensar fallas o interrupciones derivadas de un dominio incompleto de la lengua.', ej:'Un estudiante usa gestos y reformulaciones cuando le faltan palabras durante una sustentación oral.'},
+  {key:'prag', t:'Pragmática', d:'Interpretar la intención del hablante más allá de lo literal.', autor:'Cassany (2006)', def:'Capacidad de leer "entre líneas" y "tras las líneas": inferir la intención, la ideología y el propósito de quien produce un mensaje.', ej:'Reconocer la ironía en el comentario de un compañero durante el foro del curso.'}
+];
+document.getElementById('competenciasGrid').innerHTML = competencias.map(c=>
+  `<div class="card"><div class="icon-wrap">${iconosSVG[c.key]}</div><h4>${c.t}</h4><p>${c.d}</p><p class="cite">${c.autor}</p></div>`
+).join('');
+document.getElementById('teoriaBlocks').innerHTML = competencias.map(c=>
+  `<div class="teoria-block"><h4>${c.t} — ${c.autor}</h4><p style="margin:0;font-size:.92rem;">${c.def}</p></div>`
+).join('');
+document.getElementById('infografiaGrid').innerHTML = competencias.map((c,i)=>
+  `<div class="card info-node" data-idx="${i}" style="text-align:center;padding:18px;">
+     <div class="icon-wrap" style="margin:0 auto 10px;">${iconosSVG[c.key]}</div>
+     <h4 style="font-size:.9rem;margin:6px 0 0;">${c.t}</h4>
+     <p style="font-size:.74rem;color:#888;margin:4px 0 0;">Clic para ver material</p>
+   </div>`
+).join('');
+const infoHost = document.getElementById('infoPanelHost');
+document.querySelectorAll('.info-node').forEach(node=>{
+  node.addEventListener('click', ()=>{
+    const c = competencias[+node.dataset.idx];
+    infoHost.innerHTML = `<div class="info-panel show">
+        <h4>${c.t} <span class="cite">(${c.autor})</span></h4>
+        <p>${c.def}</p>
+        <p style="font-size:.86rem;"><strong>Ejemplo situado (Putumayo):</strong> ${c.ej}</p>
+      </div>`;
+    infoHost.scrollIntoView({behavior:'smooth', block:'center'});
+  });
+});
+
+/* ============ ACTIVIDAD PREVIA (4 opciones) ============ */
+const previaFacil = [
+  {q:"Según el modelo de Canale y Swain (1980), ¿cuál de las siguientes NO corresponde a una competencia comunicativa?", options:["Competencia lingüística","Competencia sociolingüística","Competencia matemática","Competencia estratégica"], correct:2},
+  {q:"¿Qué autor propuso en 1972 el concepto de competencia comunicativa como el saber qué decir, a quién y cómo, de manera apropiada?", options:["Dell Hymes","Noam Chomsky","Daniel Cassany","Lev Vygotsky"], correct:0},
+  {q:"La competencia lingüística, según Canale y Swain (1980), se refiere principalmente a:", options:["El dominio del código: gramática, léxico y fonología","La capacidad de adaptar el discurso al interlocutor","La organización coherente de un texto","La interpretación de la intención del hablante"], correct:0},
+  {q:"¿Cuál de las siguientes situaciones ejemplifica mejor la competencia lingüística?", options:["Conjugar correctamente un verbo irregular al escribir","Cambiar el tono de voz según el interlocutor","Detectar el sarcasmo en un comentario","Usar gestos para reforzar una idea"], correct:0}
+];
+const previaMedio = [
+  {q:"Completa: la competencia ______ permite adaptar el lenguaje según el contexto social y el interlocutor.", options:["sociolingüística","lingüística","estratégica","discursiva"], correct:0},
+  {q:"En la producción de un texto argumentativo, ¿qué etapa antecede a la redacción?", options:["Planeación","Edición final","Publicación","Revisión"], correct:0},
+  {q:"Un estudiante cambia su forma de hablar entre su profesor y sus compañeros de salón. ¿Qué competencia evidencia principalmente?", options:["Sociolingüística","Lingüística","Pragmática","Discursiva"], correct:0},
+  {q:"Según Cassany (2006), leer 'entre líneas' implica:", options:["Inferir lo que el texto no dice de manera explícita","Memorizar el texto palabra por palabra","Identificar solo errores ortográficos","Leer en voz alta con buena pronunciación"], correct:0}
+];
+const previaDificil = [
+  {q:"Camila respondió con sarcasmo a una pregunta seria y su compañero se ofendió. ¿Qué competencia falló en la interacción?", options:["Competencia pragmática","Competencia lingüística","Competencia discursiva","Competencia sociolingüística"], correct:0, explain:"No se interpretó la intención real del hablante más allá del significado literal."},
+  {q:"¿Cuál situación evidencia mayor competencia sociolingüística?", options:["Un correo formal solicitando una extensión de plazo al tutor","Un mensaje informal de WhatsApp a un compañero","Ambas evidencian el mismo nivel","Ninguna evidencia competencia sociolingüística"], correct:0},
+  {q:"Un estudiante del Putumayo usa una expresión regional que un interlocutor de otra región no comprende. ¿Qué tensión comunicativa se evidencia mejor?", options:["Tensión entre variedad lingüística regional y comprensión sociolingüística compartida","Un simple error gramatical del hablante","Falta de competencia lingüística","Ausencia de competencia estratégica"], correct:0}
+];
+renderMCQ('previaFacil', previaFacil, 'previaF', 4, 40, actualizarProgresoPrevia);
+renderMCQ('previaMedio', previaMedio, 'previaM', 4, 70, actualizarProgresoPrevia);
+renderMCQ('previaDificil', previaDificil, 'previaD', 4, 110, actualizarProgresoPrevia);
+function actualizarProgresoPrevia(){
+  let count = 0;
+  ['previaF','previaM','previaD'].forEach(pre=>{ window.OVA.answered.forEach(id=>{ if(id.startsWith(pre)) count++; }); });
+  document.getElementById('previaProgress').style.width = (count/8*100)+'%';
+  document.getElementById('previaProgressLabel').textContent = count+' de 8 actividades completadas';
+}
+
+/* ============ FORO ============ */
+const palabrasClave = ['Lingüística','Sociolingüística','Discursiva','Estratégica','Pragmática','Coherencia','Registro','Inferencia'];
+const nube = document.getElementById('nubePalabras');
+palabrasClave.forEach((p,i)=>{
+  const span = document.createElement('span');
+  span.textContent = p;
+  span.style.cssText = `opacity:0;transform:translateY(10px);transition:all .5s ease ${i*120}ms;background:${i%2===0?'var(--rojo)':'var(--naranja)'};color:${i%2===0?'#fff':'#1a1a1a'};padding:8px 16px;border-radius:999px;font-size:${0.85+(i%3)*0.15}rem;font-weight:600;`;
+  nube.appendChild(span);
+  setTimeout(()=>{ span.style.opacity=1; span.style.transform='translateY(0)'; }, 100);
+});
+const foroTextarea = document.getElementById('foroTextarea');
+const foroContador = document.getElementById('foroContador');
+foroTextarea.addEventListener('input', ()=> foroContador.textContent = foroTextarea.value.length+' caracteres');
+document.getElementById('foroPreview').addEventListener('click', ()=>{
+  const box = document.getElementById('foroPreviewBox');
+  box.style.display='block';
+  box.textContent = foroTextarea.value.trim() ? foroTextarea.value : 'Aún no has escrito tu aporte. Escríbelo arriba para ver la vista previa.';
+  registrarPuntaje('foro', foroTextarea.value.trim().length>30 ? 4:1, 4);
+});
+
+/* ============ CONTROL 1: LECTURA (4 opciones, 35s) ============ */
+renderMCQ('ctrlLectura', [
+  {q:"¿Qué es la coherencia en un texto?", options:["La relación lógica entre las ideas del texto","La cantidad de palabras del texto","El uso de mayúsculas","La velocidad de lectura"], correct:0},
+  {q:"¿Qué es la cohesión?", options:["Mecanismos lingüísticos que enlazan las partes de un texto (conectores, pronombres)","El tema principal del texto","La extensión del párrafo","El título del texto"], correct:0},
+  {q:"¿Qué es un acto de habla?", options:["La acción que se realiza al emitir un enunciado (prometer, ordenar, preguntar)","Un error de pronunciación","Un signo de puntuación","Una figura literaria"], correct:0},
+  {q:"¿Qué es la lectura crítica?", options:["Comprensión que va más allá de lo literal, evaluando intención y postura del texto","Leer rápido sin pausas","Memorizar el texto completo","Subrayar todas las palabras desconocidas"], correct:0},
+  {q:"¿Qué es el registro lingüístico?", options:["La variedad de lengua que se usa según la formalidad de la situación","Un cuaderno de apuntes","La velocidad al hablar","Un tipo de letra"], correct:0}
+], 'ctrlLec', 4, 35);
+
+/* ============ CONTROL 2: ESPACIOS (4 opciones, 50s) ============ */
+renderMCQ('ctrlEspacios', [
+  {q:"\"La ______ permite extraer información implícita de un texto.\"", options:["inferencia","ortografía","puntuación","caligrafía"], correct:0},
+  {q:"\"La comunicación ______ expresa ideas con claridad y respeto, sin agresividad.\"", options:["asertiva","pasiva","ambigua","literal"], correct:0},
+  {q:"\"La ______ es la estrategia discursiva para sustentar una postura con razones válidas.\"", options:["argumentación","narración","transcripción","memorización"], correct:0},
+  {q:"\"La competencia ______ organiza las ideas con coherencia y cohesión en un texto.\"", options:["discursiva","lingüística","estratégica","sociolingüística"], correct:0}
+], 'ctrlEsp', 4, 50);
+
+/* ============ CONTROL 3: SIMULACIÓN TEÓRICA (4 opciones, 90s) ============ */
+renderMCQ('ctrlSimulacion', [
+  {q:"Un estudiante explica un mismo concepto de dos formas distintas porque su compañero no entendió la primera. ¿Qué competencia está usando?", options:["Estratégica","Lingüística","Discursiva","Pragmática"], correct:0, explain:"Usa recursos para sostener la comunicación pese a la dificultad inicial."},
+  {q:"Un texto presenta ideas desordenadas y sin conectores, dificultando su comprensión global. ¿Qué le falta principalmente?", options:["Coherencia y cohesión","Ortografía","Vocabulario técnico","Extensión"], correct:0}
+], 'ctrlSim', 5, 90);
+
+/* ============ CONTROL 4: CARRERA (4 opciones, 25s por pregunta, con gate de inicio) ============ */
+(function(){
+  const preguntas = [
+    {q:"¿Qué competencia interpreta la intención más allá de lo literal?", options:["Pragmática","Lingüística","Discursiva","Estratégica"], correct:0},
+    {q:"¿Qué competencia adecúa el discurso al contexto social?", options:["Sociolingüística","Estratégica","Pragmática","Lingüística"], correct:0},
+    {q:"¿Qué competencia organiza ideas en un texto coherente?", options:["Discursiva","Lingüística","Pragmática","Sociolingüística"], correct:0},
+    {q:"¿Qué competencia resuelve obstáculos durante la interacción?", options:["Estratégica","Sociolingüística","Discursiva","Lingüística"], correct:0},
+    {q:"¿Qué competencia da el dominio formal del código?", options:["Lingüística","Pragmática","Estratégica","Discursiva"], correct:0},
+    {q:"¿Quién propuso en 1972 el concepto de competencia comunicativa?", options:["Dell Hymes","Noam Chomsky","Daniel Cassany","Paulo Freire"], correct:0}
+  ];
+  let player=0, rival=0, idx=0; const META=6;
+  const el = document.getElementById('ctrlCarrera');
+  function iniciarUI(){
+    el.innerHTML = `<div class="quiz-item">
+        <p style="font-size:.85rem;color:#666;">Responde correctamente para avanzar antes de que se acabe el tiempo de cada pregunta (25s). Tu rival avanza al azar.</p>
+        <div id="raceTimerHost"></div>
+        <div style="margin:18px 0;">
+          <div style="font-size:.78rem;margin-bottom:4px;">🏃 Tú</div>
+          <div class="progress-track"><div class="progress-fill" id="raceYou" style="background:var(--rojo)"></div></div>
+          <div style="font-size:.78rem;margin:10px 0 4px;">🤖 Rival</div>
+          <div class="progress-track"><div class="progress-fill" id="raceRival" style="background:var(--naranja)"></div></div>
+        </div>
+        <div id="raceQ"></div>
+        <p id="raceResult" style="font-weight:700;margin-top:10px;"></p>
+      </div>`;
+    siguiente();
+  }
+  function pintar(){
+    document.getElementById('raceYou').style.width = (player/META*100)+'%';
+    document.getElementById('raceRival').style.width = (rival/META*100)+'%';
+  }
+  let crono;
+  function siguiente(){
+    if(idx>=preguntas.length || player>=META || rival>=META){ finalizar(); return; }
+    const item = barajarOpciones(preguntas[idx]);
+    const timerHost = document.getElementById('raceTimerHost'); timerHost.innerHTML='';
+    const box = document.getElementById('raceQ');
+    const letras=['A','B','C','D'];
+    box.innerHTML = `<h5>${item.q}</h5><div class="quiz-opts">${item.options.map((o,oi)=>`<button class="opt-btn" data-idx="${oi}">${letras[oi]}) ${o}</button>`).join('')}</div>`;
+    function avanzar(acierto){
+      box.querySelectorAll('.opt-btn').forEach(b=>b.disabled=true);
+      if(acierto) player++; else rival += (Math.random()>0.4?1:0);
+      rival += (Math.random()>0.5?1:0); if(rival>META) rival=META;
+      pintar(); idx++; crono.cancel();
+      setTimeout(siguiente, 700);
+    }
+    crono = crearCronometro(timerHost, 25, '25s', ()=> avanzar(false));
+    box.querySelectorAll('.opt-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const ok = +btn.dataset.idx === item.correct;
+        btn.classList.add(ok?'correct':'wrong');
+        avanzar(ok);
+      });
+    });
+  }
+  function finalizar(){
+    document.getElementById('raceQ').innerHTML=''; document.getElementById('raceTimerHost').innerHTML='';
+    const result = document.getElementById('raceResult');
+    const gano = player>=rival;
+    result.textContent = gano ? '🏆 ¡Llegaste primero a la meta!' : '🤖 Tu rival llegó primero. ¡Sigue practicando!';
+    result.style.color = gano ? 'var(--verde)' : 'var(--rojo)';
+    registrarPuntaje('carrera', gano?6:3, 6);
+  }
+  crearGateInicio(el, 25, '▶ Comenzar la carrera', iniciarUI);
+})();
+
+/* ============ CONTROL 5: BANCO DE PALABRAS (arrastrar, 240s, con gate de inicio) ============ */
+(function(){
+  const palabras = [
+    {clue:'Relación lógica entre las ideas de un texto', word:'COHERENCIA'},
+    {clue:'Mecanismos lingüísticos que enlazan las partes de un texto', word:'COHESIÓN'},
+    {clue:'Variedad de lengua según la formalidad de la situación', word:'REGISTRO'},
+    {clue:'Extraer información implícita de un texto', word:'INFERENCIA'},
+    {clue:'Comunicación clara y respetuosa, sin agresividad', word:'ASERTIVA'},
+    {clue:'Competencia que interpreta la intención más allá de lo literal', word:'PRAGMÁTICA'},
+    {clue:'Estrategia para sustentar una postura con razones', word:'ARGUMENTACIÓN'},
+    {clue:'Competencia que organiza ideas con coherencia y cohesión', word:'DISCURSIVA'}
+  ];
+  const el = document.getElementById('ctrlCrucigrama');
+  function iniciarUI(){
+    el.innerHTML = `<div class="quiz-item">
+      <p style="font-size:.85rem;color:#666;">Las palabras clave están desordenadas en el banco. Arrástralas (o haz clic y luego clic en la pista) hasta la pista correcta.</p>
+      <div id="bancoTimerHost"></div>
+      <div id="banco" class="bank"></div>
+      <div id="pistasWrap"></div>
+      <button class="btn btn-primary" id="verBanco">Verificar banco de palabras</button>
+      <p class="feedback" id="fbBanco"></p>
+    </div>`;
+    const shuffled = [...palabras].sort(()=>Math.random()-0.5);
+    const banco = document.getElementById('banco');
+    const pistasWrap = document.getElementById('pistasWrap');
+    shuffled.forEach(p=>{
+      const chip = document.createElement('span'); chip.className='chip'; chip.textContent=p.word; chip.draggable=true; chip.dataset.word=p.word;
+      banco.appendChild(chip);
+    });
+    palabras.forEach((p,i)=>{
+      const row = document.createElement('div'); row.style.margin='14px 0';
+      row.innerHTML = `<p style="font-size:.88rem;margin-bottom:6px;"><strong>${i+1}.</strong> ${p.clue}</p>
+        <div class="dropzone" data-target="${p.word}">Suelta aquí la palabra correcta</div>`;
+      pistasWrap.appendChild(row);
+    });
+    let chipSeleccionado = null;
+    banco.querySelectorAll('.chip').forEach(chip=>{
+      chip.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain', chip.dataset.word));
+      chip.addEventListener('click', ()=>{
+        if(chip.classList.contains('placed')) return;
+        banco.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+        chip.classList.add('selected'); chipSeleccionado = chip;
+      });
+    });
+    function colocar(zone, word, chip){
+      zone.textContent = word; zone.classList.add('correct');
+      if(chip){ chip.classList.add('placed'); chip.draggable=false; }
+    }
+    pistasWrap.querySelectorAll('.dropzone').forEach(zone=>{
+      zone.addEventListener('dragover', e=>{ e.preventDefault(); zone.classList.add('over'); });
+      zone.addEventListener('dragleave', ()=> zone.classList.remove('over'));
+      zone.addEventListener('drop', e=>{
+        e.preventDefault(); zone.classList.remove('over');
+        const word = e.dataTransfer.getData('text/plain');
+        if(zone.classList.contains('correct')) return;
+        if(word === zone.dataset.target){
+          const chip = [...banco.querySelectorAll('.chip')].find(c=>c.dataset.word===word && !c.classList.contains('placed'));
+          colocar(zone, word, chip);
+        } else { zone.classList.add('wrong-flash'); setTimeout(()=>zone.classList.remove('wrong-flash'),350); }
+      });
+      zone.addEventListener('click', ()=>{
+        if(!chipSeleccionado || zone.classList.contains('correct')) return;
+        if(chipSeleccionado.dataset.word === zone.dataset.target){
+          colocar(zone, chipSeleccionado.dataset.word, chipSeleccionado);
+          chipSeleccionado.classList.remove('selected'); chipSeleccionado=null;
+        } else { zone.classList.add('wrong-flash'); setTimeout(()=>zone.classList.remove('wrong-flash'),350); }
+      });
+    });
+    const cronoBanco = crearCronometro(document.getElementById('bancoTimerHost'), 240, '240s', ()=> verificarBanco(true));
+    function verificarBanco(porTiempo){
+      cronoBanco.cancel();
+      const total = pistasWrap.querySelectorAll('.dropzone').length;
+      const correctas = pistasWrap.querySelectorAll('.dropzone.correct').length;
+      const fb = document.getElementById('fbBanco');
+      fb.classList.add('show', correctas===total?'ok':(porTiempo?'expired':'bad'));
+      fb.textContent = `Ubicaste ${correctas} de ${total} palabras correctamente.`;
+      registrarPuntaje('banco', correctas, total);
+      document.getElementById('verBanco').disabled = true;
+    }
+    document.getElementById('verBanco').addEventListener('click', ()=> verificarBanco(false));
+  }
+  crearGateInicio(el, 240, '▶ Comenzar el banco de palabras', iniciarUI);
+})();
+
+/* ============ CONTROL 6: TABLERO MÁGICO (drag-and-drop, 2 columnas, 100s, con gate de inicio) ============ */
+(function(){
+  const pares = [
+    ['Lingüística','Dominio del código'],
+    ['Sociolingüística','Adecuar el discurso al contexto'],
+    ['Discursiva','Organizar ideas con coherencia'],
+    ['Estratégica','Sostener la comunicación ante obstáculos'],
+    ['Pragmática','Interpretar la intención del hablante'],
+    ['Coherencia','Relación lógica entre ideas']
+  ];
+  const el = document.getElementById('ctrlTablero');
+  function iniciarUI(){
+    el.innerHTML = `<div class="quiz-item">
+      <p style="font-size:.85rem;color:#666;">Arrastra cada concepto de la columna izquierda hasta su definición en la columna derecha (también puedes hacer clic en uno y luego en el otro).</p>
+      <div id="tabTimerHost"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:10px;">
+        <div><h5 style="font-size:.82rem;color:#777;">Conceptos</h5><div id="tabTerms" style="display:flex;flex-direction:column;gap:10px;"></div></div>
+        <div><h5 style="font-size:.82rem;color:#777;">Definiciones</h5><div id="tabDefs" style="display:flex;flex-direction:column;gap:10px;"></div></div>
+      </div>
+      <p class="feedback" id="fbTablero"></p>
+    </div>`;
+    const terms = pares.map(p=>p[0]).sort(()=>Math.random()-0.5);
+    const defs = [...pares.map(p=>p[1])].sort(()=>Math.random()-0.5);
+    const termsBox = document.getElementById('tabTerms');
+    const defsBox = document.getElementById('tabDefs');
+    terms.forEach(t=>{
+      const c = document.createElement('div'); c.className='chip'; c.textContent=t; c.draggable=true; c.dataset.term=t; c.style.display='block';
+      termsBox.appendChild(c);
+    });
+    defs.forEach(d=>{
+      const z = document.createElement('div'); z.className='dropzone'; z.textContent=d; z.dataset.def=d;
+      defsBox.appendChild(z);
+    });
+    let termSel=null, matched=0, finished=false;
+    function check(){ if(matched>=pares.length && !finished){ finished=true; finalizarTablero(); } }
+    termsBox.querySelectorAll('.chip').forEach(c=>{
+      c.addEventListener('dragstart', e=> e.dataTransfer.setData('text/plain', c.dataset.term));
+      c.addEventListener('click', ()=>{
+        if(c.classList.contains('placed')) return;
+        termsBox.querySelectorAll('.chip').forEach(x=>x.classList.remove('selected'));
+        c.classList.add('selected'); termSel = c;
+      });
+    });
+    defsBox.querySelectorAll('.dropzone').forEach(z=>{
+      z.addEventListener('dragover', e=>{ e.preventDefault(); z.classList.add('over'); });
+      z.addEventListener('dragleave', ()=> z.classList.remove('over'));
+      z.addEventListener('drop', e=>{
+        e.preventDefault(); z.classList.remove('over');
+        if(z.classList.contains('correct')) return;
+        const term = e.dataTransfer.getData('text/plain');
+        const pareja = pares.find(p=>p[0]===term);
+        if(pareja && pareja[1]===z.dataset.def){
+          z.classList.add('correct');
+          const chip = [...termsBox.querySelectorAll('.chip')].find(c=>c.dataset.term===term);
+          if(chip){ chip.classList.add('placed'); chip.draggable=false; }
+          matched++; check();
+        } else { z.classList.add('wrong-flash'); setTimeout(()=>z.classList.remove('wrong-flash'),350); }
+      });
+      z.addEventListener('click', ()=>{
+        if(!termSel || z.classList.contains('correct')) return;
+        const pareja = pares.find(p=>p[0]===termSel.dataset.term);
+        if(pareja && pareja[1]===z.dataset.def){
+          z.classList.add('correct'); termSel.classList.add('placed'); termSel.draggable=false;
+          termSel.classList.remove('selected'); termSel=null; matched++; check();
+        } else { z.classList.add('wrong-flash'); setTimeout(()=>z.classList.remove('wrong-flash'),350); }
+      });
+    });
+    function finalizarTablero(porTiempo){
+      cronoTablero.cancel();
+      termsBox.querySelectorAll('.chip').forEach(c=>c.draggable=false);
+      const fb = document.getElementById('fbTablero');
+      fb.classList.add('show', matched===pares.length?'ok':(porTiempo?'expired':'bad'));
+      fb.textContent = `Relacionaste ${matched} de ${pares.length} pares.`;
+      registrarPuntaje('tablero', matched, pares.length);
+    }
+    const cronoTablero = crearCronometro(document.getElementById('tabTimerHost'), 100, '100s', ()=> finalizarTablero(true));
+  }
+  crearGateInicio(el, 100, '▶ Comenzar el tablero mágico', iniciarUI);
+})();
+
+/* ============ CONTROL 7: CLASIFICACIÓN (rediseñada: una situación a la vez, con botones de categoría, 20s por situación) ============ */
+(function(){
+  const ejemplos = [
+    {t:'Conjuga correctamente los verbos en un escrito formal', cat:'Lingüística'},
+    {t:'Cambia su forma de hablar entre el tutor y sus compañeros', cat:'Sociolingüística'},
+    {t:'Enlaza sus párrafos con conectores como "sin embargo" y "por lo tanto"', cat:'Discursiva'},
+    {t:'Usa gestos y sinónimos cuando le falta una palabra exacta', cat:'Estratégica'},
+    {t:'Reconoce el sarcasmo en un comentario del foro', cat:'Pragmática'},
+    {t:'Aplica correctamente la ortografía y el léxico técnico', cat:'Lingüística'},
+    {t:'Redacta un correo formal distinto a un mensaje de chat', cat:'Sociolingüística'},
+    {t:'Organiza una sustentación oral con introducción, desarrollo y cierre', cat:'Discursiva'},
+    {t:'Reformula una idea de varias maneras hasta lograr que se le entienda', cat:'Estratégica'},
+    {t:'Interpreta la intención real detrás de una pregunta retórica', cat:'Pragmática'}
+  ];
+  const categorias = ['Lingüística','Sociolingüística','Discursiva','Estratégica','Pragmática'];
+  const el = document.getElementById('ctrlOrganizar');
+  const SEGUNDOS = 20;
+  let orden = [], idx = 0, aciertos = 0;
+
+  function iniciarUI(){
+    orden = [...ejemplos].sort(()=>Math.random()-0.5);
+    idx = 0; aciertos = 0;
+    mostrarSituacion();
+  }
+
+  function mostrarSituacion(){
+    if(idx >= orden.length){ finalizarClasif(); return; }
+    el.innerHTML = `<div class="clasif-card">
+        <p class="progress-label">Situación ${idx+1} de ${orden.length} &nbsp;·&nbsp; Aciertos: ${aciertos}</p>
+        <div id="clasifTimerHost"></div>
+        <div class="clasif-situacion">${orden[idx].t}</div>
+        <p style="font-size:.86rem;color:#666;text-align:center;margin-bottom:12px;">¿A qué competencia comunicativa corresponde esta situación?</p>
+        <div class="clasif-opts" id="clasifOpts"></div>
+        <p class="feedback" id="fbClasif"></p>
+      </div>`;
+    const opts = document.getElementById('clasifOpts');
+    // orden aleatorio de los botones de categoría para evitar patrones de posición
+    const catsBarajadas = [...categorias].sort(()=>Math.random()-0.5);
+    catsBarajadas.forEach(cat=>{
+      const b = document.createElement('button');
+      b.className = 'clasif-opt'; b.type='button'; b.dataset.cat = cat;
+      b.textContent = cat;
+      opts.appendChild(b);
+    });
+    const item = orden[idx];
+    function responder(catElegida, porTiempo){
+      opts.querySelectorAll('.clasif-opt').forEach(b=>b.disabled=true);
+      crono.cancel();
+      const fb = document.getElementById('fbClasif');
+      const esDocente = window.OVA.isDocente;
+      if(porTiempo){
+        if(esDocente){
+          [...opts.children].find(b=>b.dataset.cat===item.cat).classList.add('correct');
+          fb.textContent = '⏱ Tiempo agotado. La competencia correcta era: '+item.cat;
+        } else {
+          fb.textContent = '⏱ Tiempo agotado para esta situación.';
+        }
+        fb.classList.add('show','expired');
+      } else if(catElegida === item.cat){
+        [...opts.children].find(b=>b.dataset.cat===catElegida).classList.add('correct');
+        fb.textContent = '✔ ¡Correcto!';
+        fb.classList.add('show','ok');
+        aciertos++;
+      } else {
+        [...opts.children].find(b=>b.dataset.cat===catElegida).classList.add('wrong');
+        if(esDocente){
+          [...opts.children].find(b=>b.dataset.cat===item.cat).classList.add('correct');
+          fb.textContent = '✘ No es correcto. La competencia correcta era: '+item.cat;
+        } else {
+          fb.textContent = '✘ No es correcto.';
+        }
+        fb.classList.add('show','bad');
+      }
+      idx++;
+      setTimeout(mostrarSituacion, 900);
+    }
+    const crono = crearCronometro(document.getElementById('clasifTimerHost'), SEGUNDOS, SEGUNDOS+'s', ()=> responder(null, true));
+    opts.querySelectorAll('.clasif-opt').forEach(b=>{
+      b.addEventListener('click', ()=> responder(b.dataset.cat, false));
+    });
+  }
+
+  function finalizarClasif(){
+    el.innerHTML = `<div class="clasif-card" style="text-align:center;">
+        <h5>Clasificación completada</h5>
+        <p>Clasificaste correctamente ${aciertos} de ${orden.length} situaciones.</p>
+      </div>`;
+    registrarPuntaje('clasificacion', aciertos, orden.length);
+  }
+
+  crearGateInicio(el, SEGUNDOS, '▶ Comenzar la clasificación', iniciarUI);
+})();
+
+/* ============ ACTIVIDAD DE APRENDIZAJE (10 casos, 4 opciones, 130s) ============ */
+const casos = [
+  {t:'1. Sustentación oral', s:'Debes sustentar ante un jurado un trabajo sobre dificultades de conectividad en tu vereda.', q:'¿Cuál es la mejor forma de responder a una pregunta crítica del jurado?', options:['Con argumentos claros y evidencia, manteniendo la calma','Cambiando de tema rápidamente','Respondiendo con monosílabos','Repitiendo lo ya dicho sin ampliar'], correct:0},
+  {t:'2. Correo formal', s:'Necesitas pedirle a tu tutor de UNAD una extensión de plazo por un corte de energía.', q:'¿Qué elemento NO debe faltar en tu correo?', options:['Un saludo formal y la justificación clara del motivo','Emojis y abreviaciones de chat','Un tono exigente','Un asunto vacío'], correct:0},
+  {t:'3. Conflicto por WhatsApp', s:'Un compañero malinterpretó tu mensaje y se molestó.', q:'¿Qué respuesta aplica mejor la comunicación asertiva?', options:['Aclarar tu intención con calma y sin atacar','Ignorar el mensaje','Responder con sarcasmo','Bloquear al compañero de inmediato'], correct:0},
+  {t:'4. Entrevista de trabajo', s:'Te entrevistan para una vacante docente en una institución rural.', q:'Ante la pregunta "¿por qué quiere este cargo?", ¿qué respuesta es más efectiva?', options:['Relacionar tu experiencia con las necesidades reales de la institución','Decir que necesitas el empleo urgentemente','No responder directamente','Hablar solo de tus logros personales'], correct:0},
+  {t:'5. Escucha activa', s:'En una reunión de padres se habla del rendimiento académico de los estudiantes.', q:'¿Qué evidencia mejor la escucha activa?', options:['Resumir lo dicho y hacer una pregunta de seguimiento','Interrumpir para dar tu opinión','Mirar el celular mientras hablan','Cambiar de tema antes de que terminen'], correct:0},
+  {t:'6. Debate académico', s:'Se debate el uso de la tecnología en la educación rural.', q:'¿Cuál es el mejor aporte en un debate académico?', options:['Un argumento sustentado con un ejemplo concreto','Una opinión sin justificar','Descalificar al otro participante','Repetir lo que ya dijo otro compañero'], correct:0},
+  {t:'7. Comunicación territorial', s:'Un estudiante urbano malinterpreta una expresión regional de un estudiante del Putumayo.', q:'¿Qué competencias resuelven mejor este malentendido?', options:['Sociolingüística y pragmática','Solo lingüística','Solo estratégica','Solo discursiva'], correct:0},
+  {t:'8. Argumentación', s:'Debes defender la importancia de la alfabetización digital en el Valle del Guamuez.', q:'¿Cuál es un argumento válido?', options:['Reduce la brecha de acceso a la información en zonas con baja conectividad','Porque a todos les gusta la tecnología','Porque es una moda actual','Porque otros países ya lo hacen'], correct:0},
+  {t:'9. Retroalimentación entre pares', s:'Revisas un párrafo de un compañero con problemas de coherencia.', q:'¿Cómo das una retroalimentación constructiva?', options:['Señalando lo positivo y sugiriendo mejoras concretas','Solo diciendo que está mal','Reescribiendo todo sin explicar','Ignorando los errores para no incomodar'], correct:0},
+  {t:'10. Reto integrador', s:'Cierre del módulo: aplicar varias competencias a la vez.', q:'¿Qué resume mejor el dominio de las competencias comunicativas?', options:['Adaptar el mensaje al contexto, organizarlo con coherencia e interpretar bien la intención del otro','Hablar mucho y rápido','Usar palabras complejas siempre','Memorizar reglas gramaticales sin aplicarlas'], correct:0}
+];
+const aprendizajeGrid = document.getElementById('aprendizajeGrid');
+casos.forEach((c,i)=>{
+  const div = document.createElement('div'); div.className='card'; div.style.borderTopColor='var(--rojo)';
+  div.innerHTML = `<h4>${c.t}</h4><p style="font-style:italic;">${c.s}</p><div id="caso${i}"></div>`;
+  aprendizajeGrid.appendChild(div);
+  renderMCQ('caso'+i, [{q:c.q, options:c.options, correct:c.correct}], 'aprend'+i+'_', 6, 130);
+});
+
+/* ============ ESCAPE ROOM FINAL (4 opciones con distractores, gate de inicio) ============ */
+(function(){
+  const pistas = [
+    {q:'Pista 1: ¿Cuál competencia da el dominio del código lingüístico?', options:['Lingüística','Pragmática','Discursiva','Sociolingüística'], correct:0},
+    {q:'Pista 2: ¿Cuál competencia adecúa el discurso al contexto social?', options:['Sociolingüística','Discursiva','Estratégica','Lingüística'], correct:0},
+    {q:'Pista 3: ¿Cuál competencia organiza el texto con coherencia?', options:['Discursiva','Estratégica','Pragmática','Sociolingüística'], correct:0},
+    {q:'Pista 4: ¿Cuál competencia interpreta la intención real del mensaje?', options:['Pragmática','Lingüística','Discursiva','Estratégica'], correct:0}
+  ];
+  let nivel=0;
+  const el = document.getElementById('escapeRoom');
+  const letras=['A','B','C','D'];
+  function pintar(autoIniciar){
+    if(nivel>=pistas.length){
+      el.innerHTML = `<p style="font-weight:700;color:var(--verde);">🔓 ¡Acceso desbloqueado! Has demostrado dominio de las cinco competencias comunicativas.</p>`;
+      registrarPuntaje('escape', 6, 6);
+      return;
+    }
+    function construir(){
+      const p = barajarOpciones(pistas[nivel]);
+      const timerHost = document.createElement('div');
+      el.innerHTML = '';
+      const div = document.createElement('div'); div.className='quiz-item';
+      div.appendChild(timerHost);
+      div.innerHTML += `<h5>${p.q}</h5><div class="quiz-opts">${p.options.map((o,oi)=>`<button class="opt-btn" data-idx="${oi}">${letras[oi]}) ${o}</button>`).join('')}</div><div class="feedback" id="fbEscape"></div>`;
+      el.appendChild(div);
+      function responder(idx, porTiempo){
+        div.querySelectorAll('.opt-btn').forEach(b=>b.disabled=true);
+        const fb = document.getElementById('fbEscape');
+        cronoEscape.cancel();
+        const esDocente = window.OVA.isDocente;
+        if(porTiempo){
+          if(esDocente){
+            div.querySelectorAll('.opt-btn')[p.correct].classList.add('correct');
+            fb.textContent='⏱ Tiempo agotado. La respuesta correcta era: '+letras[p.correct]+') '+p.options[p.correct]+'. Reintentando esta pista...';
+          } else {
+            fb.textContent='⏱ Tiempo agotado. Reintentando esta pista...';
+          }
+          fb.classList.add('show','expired');
+          setTimeout(()=>{ pintar(true); }, 1200); return;
+        }
+        if(idx===p.correct){
+          div.querySelectorAll('.opt-btn')[idx].classList.add('correct');
+          fb.classList.add('show','ok'); fb.textContent='✔ Pista superada, avanzando...';
+          setTimeout(()=>{ nivel++; pintar(true); }, 700);
+        } else {
+          div.querySelectorAll('.opt-btn')[idx].classList.add('wrong');
+          fb.classList.add('show','bad'); fb.textContent='✘ Esa opción es una de las trampas. Intenta de nuevo.';
+          setTimeout(()=>{ pintar(true); }, 900);
+        }
+      }
+      const cronoEscape = crearCronometro(timerHost, 50, '50s', ()=> responder(null, true));
+      div.querySelectorAll('.opt-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=> responder(+btn.dataset.idx, false));
+      });
+    }
+    if(autoIniciar){ construir(); }
+    else { crearGateInicio(el, 50, '▶ Comenzar el escape room', construir); }
+  }
+  pintar(false);
+})();
+
+/* ============ PISTAS FINALES (CONCLUSIONES, 4 opciones, 60s) ============ */
+renderMCQ('pistasFinal', [
+  {q:"¿Cuáles son las 5 competencias comunicativas trabajadas en este módulo?", options:["Lingüística, sociolingüística, discursiva, estratégica y pragmática","Matemática, física, química, biología e historia","Solo lectura y escritura","Gramática, ortografía, caligrafía y redacción"], correct:0},
+  {q:"¿Por qué son importantes estas competencias para tu vida universitaria?", options:["Porque sostienen la comprensión, argumentación y participación académica","Porque solo sirven para exámenes","No tienen relación con la vida universitaria","Solo sirven para el curso de español"], correct:0},
+  {q:"En el contexto rural del Putumayo, ¿qué papel cumplen estas competencias?", options:["Son una herramienta de equidad educativa y fortalecimiento de la voz del estudiante","No tienen ningún papel especial","Solo aplican en zonas urbanas","Sirven únicamente para aprobar el curso"], correct:0}
+], 'pista', 4, 60);
+
+/* ============ NOTA FINAL: ESCALA 1.0-5.0 Y FORTALEZAS/DEBILIDADES ============ */
+function calcularEscala5(nota100){
+  const valor = Math.max(1, Math.round((nota100/100*5)*10)/10);
+  let etiqueta, color;
+  if(valor >= 4.6){ etiqueta='Desempeño Superior'; color='var(--verde)'; }
+  else if(valor >= 4.0){ etiqueta='Desempeño Alto'; color='var(--verde)'; }
+  else if(valor >= 3.0){ etiqueta='Desempeño Básico'; color='#B5650A'; }
+  else { etiqueta='Desempeño Bajo'; color='var(--rojo)'; }
+  return { valor, etiqueta, color };
+}
+function calcularFortalezasDebilidades(categorias){
+  const fortalezas = [], debilidades = [];
+  Object.entries(categorias).forEach(([cat,v])=>{
+    if(v.max <= 0) return;
+    const pct = v.puntos / v.max;
+    if(pct >= 0.8) fortalezas.push(cat);
+    else if(pct < 0.6) debilidades.push(cat);
+  });
+  return { fortalezas, debilidades };
+}
+/* ============ PLAN DE MEJORA POR CATEGORÍA (informe cuantitativo) ============ */
+const PLAN_MEJORA = {
+  'Actividad previa':'Repasa los niveles recordar/comprender/analizar antes de reintentar: subraya ideas clave del documento oficial del curso y practica preguntas tipo ICFES cronometradas.',
+  'Foro':'Redacta tu aporte apoyándote en la rúbrica (claridad, argumentación con autores, respeto y respuesta a un compañero) antes de publicarlo en la plataforma.',
+  'Control · Lectura':'Vuelve a leer el texto guía identificando idea principal, ideas secundarias e inferencias antes de responder.',
+  'Control · Espacios':'Refuerza el vocabulario técnico de las competencias comunicativas (lingüística, sociolingüística, discursiva, estratégica, pragmática).',
+  'Control · Simulación':'Revisa los ejemplos situados en el contexto rural del Putumayo para reconocer cada competencia en una situación real.',
+  'Control · Carrera':'Practica la velocidad de reconocimiento conceptual con tarjetas de repaso antes de un nuevo intento.',
+  'Control · Banco de palabras':'Elabora un glosario propio con las palabras clave del módulo y sus definiciones en tus propias palabras.',
+  'Control · Tablero mágico':'Relaciona cada concepto con su autor de referencia (Hymes, Canale y Swain, Cassany) mediante un mapa conceptual.',
+  'Control · Clasificación':'Practica clasificar situaciones comunicativas cotidianas según la competencia que predomina en cada una.',
+  'Actividad de aprendizaje':'Vuelve a leer la teoría del bloque y busca ejemplos propios antes de reintentar la actividad.',
+  'Escape room':'Repasa las cinco competencias en conjunto: identifica cuál aplica en cada pista antes de responder.',
+  'Conclusiones':'Repasa la infografía interactiva de cada competencia para consolidar la visión general del módulo.'
+};
+function generarRetroalimentacion(categorias, fd){
+  const total = Object.keys(categorias).length;
+  if(total===0) return 'Aún no hay actividades registradas para generar retroalimentación.';
+  if(fd.debilidades.length===0 && fd.fortalezas.length>0) return 'Excelente desempeño general: mantienes un dominio consistente en todas las categorías evaluadas.';
+  if(fd.debilidades.length>0) return `Se identifican oportunidades de mejora puntuales. Enfoca tu repaso en: ${fd.debilidades.join(', ')}.`;
+  return 'Tu desempeño es intermedio. Sigue practicando para consolidar cada competencia.';
+}
+function generarPlanMejoraHTML(fd){
+  if(fd.debilidades.length===0) return '<p style="margin:8px 0 0;color:var(--verde);font-weight:600;">✔ No se requieren acciones de refuerzo por ahora. ¡Continúa así!</p>';
+  return '<ul style="margin:8px 0 0;padding-left:18px;">' + fd.debilidades.map(cat=>
+    `<li style="margin-bottom:4px;"><strong>${cat}:</strong> ${PLAN_MEJORA[cat] || 'Repasa el material del curso relacionado con esta actividad.'}</li>`
+  ).join('') + '</ul>';
+}
+function obtenerCategorias(){
+  const categorias = {};
+  Object.values(window.OVA.scores).forEach(s=>{
+    if(!categorias[s.categoria]) categorias[s.categoria] = {puntos:0,max:0};
+    categorias[s.categoria].puntos += s.puntos;
+    categorias[s.categoria].max += s.maxPuntos;
+  });
+  return categorias;
+}
+function actualizarNotaFinal(){
+  const max = window.OVA.max; const total = window.OVA.total;
+  const nota = max>0 ? Math.round((total/max)*100) : 0;
+  const num = document.getElementById('notaFinalNum'); const msg = document.getElementById('notaFinalMsg');
+  const escalaEl = document.getElementById('notaFinalEscala');
+  if(!num) return;
+  num.textContent = nota + '/100';
+  const escala = calcularEscala5(nota);
+  escalaEl.textContent = `${escala.valor.toFixed(1)} / 5.0 — ${escala.etiqueta}`;
+  escalaEl.style.color = escala.color;
+  let texto='';
+  if(nota>=90){ texto='Dominio conceptual excelente.'; }
+  else if(nota>=70){ texto='Dominio conceptual satisfactorio.'; }
+  else if(nota>=50){ texto='Dominio conceptual básico. Se recomienda repasar.'; }
+  else { texto='Requiere refuerzo antes de continuar.'; }
+  msg.textContent = texto; msg.style.color = escala.color; num.style.color = escala.color;
+
+  const categorias = obtenerCategorias();
+  const fd = calcularFortalezasDebilidades(categorias);
+  const box = document.getElementById('fortalezasDebilidadesBox');
+  if(Object.keys(categorias).length > 0){
+    box.style.display = 'block';
+    box.innerHTML = `
+      <p style="margin-bottom:6px;"><strong>💪 Fortalezas:</strong> ${fd.fortalezas.length ? fd.fortalezas.join(', ') : 'aún no se identifican con los datos actuales'}</p>
+      <p style="margin:0;"><strong>📌 Aspectos por reforzar:</strong> ${fd.debilidades.length ? fd.debilidades.join(', ') : 'aún no se identifican con los datos actuales'}</p>`;
+  }
+}
+document.getElementById('verReporte').addEventListener('click', ()=>{
+  const box = document.getElementById('reporteBox');
+  const e = window.OVA.estudiante || {};
+  const { nota, escala } = filaReporte();
+  const categorias = obtenerCategorias();
+  const fd = calcularFortalezasDebilidades(categorias);
+  box.style.display='block';
+  box.innerHTML = `<h4 style="margin-bottom:10px;color:var(--azul-unad);">📊 Informe cuantitativo del estudiante</h4>
+    <p><strong>Estudiante:</strong> ${e.nombres||''} ${e.apellidos||''}</p>
+    <p><strong>Correo:</strong> ${e.email||''} &nbsp;·&nbsp; <strong>Rol:</strong> ${e.rol||'Estudiante'}</p>
+    <p><strong>Grado:</strong> ${e.grado||''} &nbsp;·&nbsp; <strong>Institución:</strong> ${e.institucion||''}</p>
+    <p><strong>Actividades completadas:</strong> ${window.OVA.answered.size}</p>
+    <p><strong>Puntaje obtenido:</strong> ${window.OVA.total} / ${window.OVA.max}</p>
+    <p><strong>Nota de dominio conceptual:</strong> ${nota}/100 (${escala.valor.toFixed(1)}/5.0 — ${escala.etiqueta})</p>
+    <p><strong>Alertas de integridad:</strong> ${window.OVA.violations} / 3</p>
+    <p><strong>Actividades anuladas por integridad:</strong> ${window.OVA.invalidated.size}</p>
+    <hr style="border-color:var(--gris-medio);margin:12px 0;">
+    <p><strong>💪 Fortalezas:</strong> ${fd.fortalezas.length ? fd.fortalezas.join(', ') : 'aún no se identifican con los datos actuales'}</p>
+    <p><strong>📌 Debilidades:</strong> ${fd.debilidades.length ? fd.debilidades.join(', ') : 'aún no se identifican con los datos actuales'}</p>
+    <p><strong>🗣️ Retroalimentación:</strong> ${generarRetroalimentacion(categorias, fd)}</p>
+    <p style="margin-bottom:2px;"><strong>🎯 Plan de mejora sugerido:</strong></p>
+    ${generarPlanMejoraHTML(fd)}
+    <p style="font-size:.78rem;color:#666;margin-top:12px;">Docente: Stiven Eduardo T. Bermúdez · UDR-Zona Sur, Valle del Guamuez · UNAD 2026</p>`;
+});
+
+/* ============ GUARDAR REGISTRO PARA EL PANEL DOCENTE ============ */
+function construirRegistroConsolidado(){
+  const e = window.OVA.estudiante || {};
+  const { nota, escala } = filaReporte();
+  const categorias = obtenerCategorias();
+  const fd = calcularFortalezasDebilidades(categorias);
+  return {
+    nombres: e.nombres||'', apellidos: e.apellidos||'', grado: e.grado||'', institucion: e.institucion||'',
+    inicio: e.inicio||'', total: window.OVA.total, max: window.OVA.max, nota,
+    escalaValor: escala.valor, escalaEtiqueta: escala.etiqueta,
+    violaciones: window.OVA.violations, anuladas: window.OVA.invalidated.size,
+    fortalezas: fd.fortalezas, debilidades: fd.debilidades, categorias,
+    guardado: new Date().toISOString()
+  };
+}
+function guardarRegistroLocal(registro){
+  let lista = [];
+  try{ lista = JSON.parse(localStorage.getItem('ovaRegistrosDocente')||'[]'); }catch(e){ lista = []; }
+  const clave = r => (r.nombres+'|'+r.apellidos+'|'+r.institucion+'|'+r.grado).toLowerCase();
+  lista = lista.filter(r => clave(r) !== clave(registro));
+  lista.push(registro);
+  localStorage.setItem('ovaRegistrosDocente', JSON.stringify(lista));
+}
+function descargarRegistroJSON(registro){
+  const blob = new Blob([JSON.stringify(registro, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `registro_${(registro.apellidos||'estudiante').replace(/\s+/g,'_')}_${(registro.nombres||'').replace(/\s+/g,'_')}.json`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+const btnGuardarRegistro = document.getElementById('guardarRegistroDocente');
+if(btnGuardarRegistro){
+  btnGuardarRegistro.addEventListener('click', ()=>{
+    const registro = construirRegistroConsolidado();
+    guardarRegistroLocal(registro);
+    descargarRegistroJSON(registro);
+    const fb = document.getElementById('reporteBox');
+    fb.style.display='block';
+    fb.innerHTML += `<p style="margin-top:10px;color:var(--verde);font-weight:600;">💾 Registro guardado y descargado en formato .json. Súbelo a la carpeta de Drive del docente o entrégalo junto con tu reporte para que se incluya en el Panel Docente.</p>`;
+  });
+}
+
+/* ============ PANEL DOCENTE: DASHBOARD CONSOLIDADO ============ */
+let PANEL_REGISTROS = [];
+
+/* Estimación de género a partir del primer nombre (heurística en español, uso agregado y estadístico) */
+const NOMBRES_FEM = new Set(['maria','ana','laura','camila','valentina','sofia','sofía','isabella','mariana','daniela','valeria','luisa','paula','andrea','carolina','natalia','juliana','alejandra','catalina','gabriela','fernanda','sara','sarah','ximena','jimena','yuliana','yuranis','yesenia','leidy','leydi','diana','sandra','claudia','patricia','martha','marcela','viviana','angela','ángela','carmen','rosa','yolanda','beatriz','esperanza','yeimy','tatiana','johana','yohana','estefania','estefanía','melany','melanie','dayana','brigitte','luz','deisy','yenny','ingrid','karol','karina','johanna','angie','nicole','samantha','emily','abigail','antonella','ashley','britney','dayanna']);
+const NOMBRES_MASC = new Set(['juan','carlos','jose','josé','luis','miguel','andres','andrés','andrés','david','daniel','santiago','sebastian','sebastián','felipe','alejandro','diego','jorge','fernando','ricardo','oscar','óscar','edwin','edgar','wilson','wilmer','fabian','fabián','cristian','kristian','brayan','brandon','jhon','john','yeison','yeisson','jhonatan','jonathan','stiven','steven','esteven','kevin','anderson','duvan','duván','yeferson','jefferson','johan','giovanny','giovanni','camilo','mateo','samuel','emmanuel','isaac','gabriel','rafael','manuel','pedro','pablo','victor','víctor','henry','harold','yeisson','deiby','deivy','jair','yair','eduardo','arturo','armando','german','germán','ivan','iván']);
+function inferirGenero(nombres){
+  const primer = (nombres||'').trim().split(/\s+/)[0]?.toLowerCase().normalize('NFC') || '';
+  if(!primer) return 'No determinado';
+  if(NOMBRES_FEM.has(primer)) return 'Femenino';
+  if(NOMBRES_MASC.has(primer)) return 'Masculino';
+  if(/[aá]$/.test(primer)) return 'Femenino (estimado)';
+  if(/[o]$/.test(primer)) return 'Masculino (estimado)';
+  return 'No determinado';
+}
+
+function cargarDesdeLocalStorage(){
+  let lista = [];
+  try{ lista = JSON.parse(localStorage.getItem('ovaRegistrosDocente')||'[]'); }catch(e){ lista = []; }
+  mezclarRegistros(lista);
+}
+function mezclarRegistros(nuevos){
+  const clave = r => (r.nombres+'|'+r.apellidos+'|'+r.institucion+'|'+r.grado).toLowerCase();
+  const claves = new Set(PANEL_REGISTROS.map(clave));
+  nuevos.forEach(r=>{ if(!claves.has(clave(r))){ PANEL_REGISTROS.push(r); claves.add(clave(r)); } });
+  renderPanelDocente();
+}
+function inicializarPanelDocente(){
+  cargarDesdeLocalStorage();
+  renderPanelDocente();
+}
+const inputImportar = document.getElementById('importarRegistros');
+if(inputImportar){
+  inputImportar.addEventListener('change', (e)=>{
+    const files = Array.from(e.target.files||[]);
+    let pendientes = files.length; if(pendientes===0) return;
+    const importados = [];
+    files.forEach(f=>{
+      const reader = new FileReader();
+      reader.onload = ()=>{
+        try{
+          const data = JSON.parse(reader.result);
+          if(Array.isArray(data)) importados.push(...data); else importados.push(data);
+        }catch(err){ /* archivo inválido, se ignora */ }
+        pendientes--;
+        if(pendientes===0) mezclarRegistros(importados);
+      };
+      reader.readAsText(f);
+    });
+  });
+}
+const btnRecargarLS = document.getElementById('recargarLocalStorage');
+if(btnRecargarLS) btnRecargarLS.addEventListener('click', cargarDesdeLocalStorage);
+const btnLimpiar = document.getElementById('limpiarRegistros');
+if(btnLimpiar) btnLimpiar.addEventListener('click', ()=>{
+  if(confirm('¿Eliminar todos los registros cargados en el Panel Docente? Esto no borra los archivos ya descargados por los estudiantes.')){
+    PANEL_REGISTROS = [];
+    localStorage.removeItem('ovaRegistrosDocente');
+    renderPanelDocente();
+  }
+});
+
+function renderPanelDocente(){
+  const kpiHost = document.getElementById('panelDocenteKPIs');
+  const tablasHost = document.getElementById('panelDocenteTablas');
+  const fdHost = document.getElementById('panelDocenteFD');
+  const generoHost = document.getElementById('panelDocenteGenero');
+  if(!kpiHost) return;
+
+  const n = PANEL_REGISTROS.length;
+  if(n===0){
+    kpiHost.innerHTML = `<div class="card"><h4>Sin registros aún</h4><p>Carga o importa registros de estudiantes para ver el dashboard.</p></div>`;
+    tablasHost.innerHTML=''; fdHost.innerHTML=''; generoHost.innerHTML='';
+    return;
+  }
+
+  const promedioEscala = (PANEL_REGISTROS.reduce((a,r)=>a+(r.escalaValor||0),0)/n).toFixed(2);
+  const conAlertas = PANEL_REGISTROS.filter(r=>(r.violaciones||0)>0).length;
+  const instituciones = new Set(PANEL_REGISTROS.map(r=>r.institucion));
+
+  kpiHost.innerHTML = `
+    <div class="card" style="border-top-color:var(--azul-unad);text-align:center;"><h4 style="font-size:.8rem;color:#777;">Estudiantes registrados</h4><div style="font-size:2rem;font-family:var(--font-display);color:var(--azul-unad);">${n}</div></div>
+    <div class="card" style="border-top-color:var(--naranja-unad);text-align:center;"><h4 style="font-size:.8rem;color:#777;">Promedio general (1.0–5.0)</h4><div style="font-size:2rem;font-family:var(--font-display);color:var(--naranja-unad);">${promedioEscala}</div></div>
+    <div class="card" style="border-top-color:var(--oro-laurel);text-align:center;"><h4 style="font-size:.8rem;color:#777;">Instituciones activas</h4><div style="font-size:2rem;font-family:var(--font-display);color:var(--oro-laurel);">${instituciones.size}</div></div>
+    <div class="card" style="border-top-color:var(--rojo);text-align:center;"><h4 style="font-size:.8rem;color:#777;">Con alertas de integridad</h4><div style="font-size:2rem;font-family:var(--font-display);color:var(--rojo);">${conAlertas}</div></div>`;
+
+  // Agrupar por institución -> grado
+  const grupos = {};
+  PANEL_REGISTROS.forEach(r=>{
+    const inst = r.institucion || 'Sin institución';
+    const grado = r.grado || 'Sin grado';
+    grupos[inst] = grupos[inst] || {};
+    grupos[inst][grado] = grupos[inst][grado] || [];
+    grupos[inst][grado].push(r);
+  });
+  let tablasHTML = '';
+  Object.entries(grupos).forEach(([inst, grados])=>{
+    tablasHTML += `<div class="card" style="margin-top:18px;border-top-color:var(--azul-unad);">
+      <h4>${inst}</h4>`;
+    Object.entries(grados).forEach(([grado, regs])=>{
+      const promInst = (regs.reduce((a,r)=>a+(r.escalaValor||0),0)/regs.length).toFixed(2);
+      tablasHTML += `<p style="font-size:.85rem;margin:10px 0 6px;"><strong>Grado ${grado}</strong> — ${regs.length} estudiante(s) · Promedio: <strong>${promInst}</strong>/5.0</p>
+        <div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+          <thead><tr style="background:var(--gris);text-align:left;">
+            <th style="padding:6px 8px;">Estudiante</th><th style="padding:6px 8px;">Nota</th><th style="padding:6px 8px;">Escala</th>
+            <th style="padding:6px 8px;">Fortalezas</th><th style="padding:6px 8px;">A reforzar</th><th style="padding:6px 8px;">Alertas</th>
+          </tr></thead><tbody>`;
+      regs.sort((a,b)=>(b.escalaValor||0)-(a.escalaValor||0)).forEach(r=>{
+        tablasHTML += `<tr style="border-bottom:1px solid var(--gris-medio);">
+          <td style="padding:6px 8px;">${r.nombres} ${r.apellidos}</td>
+          <td style="padding:6px 8px;">${r.nota}/100</td>
+          <td style="padding:6px 8px;">${(r.escalaValor||0).toFixed(1)} — ${r.escalaEtiqueta||''}</td>
+          <td style="padding:6px 8px;">${(r.fortalezas||[]).join(', ')||'—'}</td>
+          <td style="padding:6px 8px;">${(r.debilidades||[]).join(', ')||'—'}</td>
+          <td style="padding:6px 8px;">${r.violaciones||0}</td>
+        </tr>`;
+      });
+      tablasHTML += `</tbody></table></div>`;
+    });
+    tablasHTML += `</div>`;
+  });
+  tablasHost.innerHTML = tablasHTML;
+
+  // Fortalezas / debilidades agregadas
+  const contFort = {}, contDeb = {};
+  PANEL_REGISTROS.forEach(r=>{
+    (r.fortalezas||[]).forEach(c=> contFort[c]=(contFort[c]||0)+1);
+    (r.debilidades||[]).forEach(c=> contDeb[c]=(contDeb[c]||0)+1);
+  });
+  const barra = (obj, color)=> Object.entries(obj).sort((a,b)=>b[1]-a[1]).map(([cat,cnt])=>{
+    const pct = Math.round((cnt/n)*100);
+    return `<div style="margin-bottom:8px;">
+      <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:2px;"><span>${cat}</span><span>${cnt} (${pct}%)</span></div>
+      <div style="background:var(--gris-medio);border-radius:6px;height:10px;overflow:hidden;"><div style="width:${pct}%;height:100%;background:${color};"></div></div>
+    </div>`;
+  }).join('') || '<p style="font-size:.85rem;color:#777;">Sin datos suficientes.</p>';
+  fdHost.innerHTML = `<h4 style="font-size:.95rem;">💪 Fortalezas más frecuentes</h4>${barra(contFort,'var(--verde)')}
+    <h4 style="font-size:.95rem;margin-top:16px;">📌 Aspectos por reforzar más frecuentes</h4>${barra(contDeb,'var(--rojo)')}`;
+
+  // Género (estimado) por institución/grado
+  const generoCount = { 'Femenino':0, 'Femenino (estimado)':0, 'Masculino':0, 'Masculino (estimado)':0, 'No determinado':0 };
+  PANEL_REGISTROS.forEach(r=>{ const g = inferirGenero(r.nombres); generoCount[g] = (generoCount[g]||0)+1; });
+  const femTotal = generoCount['Femenino']+generoCount['Femenino (estimado)'];
+  const mascTotal = generoCount['Masculino']+generoCount['Masculino (estimado)'];
+  const nd = generoCount['No determinado'];
+  const genBarra = (label, cnt, color)=>{
+    const pct = Math.round((cnt/n)*100);
+    return `<div style="margin-bottom:8px;">
+      <div style="display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:2px;"><span>${label}</span><span>${cnt} (${pct}%)</span></div>
+      <div style="background:var(--gris-medio);border-radius:6px;height:12px;overflow:hidden;"><div style="width:${pct}%;height:100%;background:${color};"></div></div>
+    </div>`;
+  };
+  generoHost.innerHTML = genBarra('Femenino (estimado)', femTotal, 'var(--morado-unad)') +
+    genBarra('Masculino (estimado)', mascTotal, 'var(--celeste-unad)') +
+    genBarra('No determinado', nd, 'var(--gris-medio)');
+}
+
+function exportarConsolidadoCSV(){
+  if(PANEL_REGISTROS.length===0){ alert('No hay registros cargados para exportar.'); return; }
+  const cabecera = ['Nombres','Apellidos','Grado','Institución','Género (estimado)','Nota /100','Nota escala 1.0-5.0','Desempeño','Alertas','Anuladas','Fortalezas','Debilidades','Fecha inicio'];
+  const esc = (v)=> `"${String(v==null?'':v).replace(/"/g,'""')}"`;
+  let csv = '\uFEFF' + cabecera.map(esc).join(';') + '\n';
+  PANEL_REGISTROS.forEach(r=>{
+    const fila = [r.nombres, r.apellidos, r.grado, r.institucion, inferirGenero(r.nombres), r.nota, (r.escalaValor||0).toFixed(1), r.escalaEtiqueta, r.violaciones||0, r.anuladas||0, (r.fortalezas||[]).join(' | '), (r.debilidades||[]).join(' | '), r.inicio];
+    csv += fila.map(esc).join(';') + '\n';
+  });
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `Consolidado_PanelDocente_${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+const btnExportarCSV = document.getElementById('exportarConsolidadoCSV');
+if(btnExportarCSV) btnExportarCSV.addEventListener('click', exportarConsolidadoCSV);
+</script>
+</body>
+</html>
